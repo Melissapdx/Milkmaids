@@ -24,6 +24,10 @@ def load_users():
         user = User(user_id=user_id, firstname=firstname, lastname=lastname,
         username=username, password=password, address=address, zipcode=zipcode, email=email)
 
+    #add user to database
+    db.session.add(user)
+#commit user to database
+db.session.commit()
 
 if __name__ == "__main__":
     connect_to_db(app)
