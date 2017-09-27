@@ -15,6 +15,9 @@ class Order(db.model):
     order_date = db.Column(db.DateTime)
     total_price = db.Column(db.Integer)
 
+    #define relationship to user
+    user = db.relationship("User", backref="orders")
+
     def __repr__(self):
         """Provide representation when printed"""
 
@@ -54,6 +57,9 @@ class Milk(db.model):
     inventory = db.Column(db.Integer)
     date = db.Column(db.datetime)
 
+    #define relationship to user
+    user = db.relationship("User", backref="milk")
+
     def __repr__(self):
         """Provide representation when printed"""
 
@@ -70,6 +76,10 @@ class Order_item(db.model):
     milk_id = db.Column(db.Integer, db.ForeignKey('milk.milk_id'))
     quantity = db.Column(db.Integer)
 
+    #define relationship to user
+    user = db.relationship("Order", backref="order_items")
+    user = db.relationship("Milk", backref="order_items")
+
     def __repr__(self):
         """Provide representation when printed"""
 
@@ -84,6 +94,10 @@ class Milk_diet(db.model):
     milk_diet_id = db.Column(db.Integer, primary_key=True)
     milk_id = db.Column(db.Integer(30), db.ForeignKey('milk.milk_id'))
     diet_id = db.Column(db.Integer(30), db.ForeignKey('diet.diet_id'))
+
+    #define relationship to user
+    user = db.relationship("Milk", backref="milk_diet")
+    user = db.relationship("Diet", backref="milk_diet")
 
     def __repr__(self):
         """Provide representation when printed"""
