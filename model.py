@@ -17,7 +17,8 @@ class Order(db.model):
     def __repr__(self):
         """Provide representation when printed"""
 
-        return "<Order order_id=%s user_id=%s order_status=%s order_date=%s>" %(self.order_id, self.user_id, self.order_status, self.order_date)
+        return "<Order order_id=%s user_id=%s order_status=%s order_date=%s>" % (self.order_id, self.user_id, self.order_status, self.order_date)
+
 
 class User(db.model):
     """Users of website"""
@@ -36,7 +37,8 @@ class User(db.model):
     def __repr__(self):
         """Provide representation when printed"""
 
-        return "<User user_id=%s firstname=%s lastname=%s username=%s password=%s address=%s zipcode=%s email=%s>" %(self.user_id, self.firstname, self.lastname, self.username, self.password, self.address, self.zipcode, self.email)
+        return "<User user_id=%s firstname=%s lastname=%s username=%s password=%s address=%s zipcode=%s email=%s>" % (self.user_id, self.firstname, self.lastname, self.username, self.password, self.address, self.zipcode, self.email)
+
 
 class Milk(db.model):
     """Milk for website"""
@@ -54,7 +56,8 @@ class Milk(db.model):
     def __repr__(self):
         """Provide representation when printed"""
 
-        return "<Milk milk_id=%s smoker=%s baby_age=%s user_id=%s price_per_oz=%s inventory=%s date=%s>" %(self.milk_id, self.smoker, self.baby_age, self.user_id, self.price_per_oz, self.inventory, self.date)
+        return "<Milk milk_id=%s smoker=%s baby_age=%s user_id=%s price_per_oz=%s inventory=%s date=%s>" % (self.milk_id, self.smoker, self.baby_age, self.user_id, self.price_per_oz, self.inventory, self.date)
+
 
 class Order_item(db.model):
     """Items in Order"""
@@ -69,7 +72,9 @@ class Order_item(db.model):
     def __repr__(self):
         """Provide representation when printed"""
 
-        return "<Order_item>"
+        return "<Order_item order_item_id=%s order_id=%s milk_id=%s quantity=%s>" % (self.order_item_id, self.order_id, self.milk_id, self.quantity)
+
+
 class Milk_diet(db.model):
     """Milk donated to milk website"""
 
@@ -81,18 +86,21 @@ class Milk_diet(db.model):
 
     def __repr__(self):
         """Provide representation when printed"""
+        return "<Milk_diet milk_diet_id=%s milk_id=%s diet_id=%s>" % (self.milk_diet_id, self.milk_id, self.diet_id)
 
 
 class Diet(db.model):
     """Stores diet information about milk"""
 
     __tablename__ = "diet"
+
     diet_id = db.Column(db.Integer, primary_key=True)
     diet_name = db.Column(db.String(64))
 
     def __repr__(self):
         """Provide representation when printed"""
 
+        return "<Diet diet_id=%s,diet_name=%s>" % (self.diet_id, self.diet_name)
 
 #Helper functions
 
