@@ -13,6 +13,7 @@ class Order(db.model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     order_status = db.Column(db.String(30))
     order_date = db.Column(db.DateTime)
+    total_price = db.Column(db.Integer)
 
     def __repr__(self):
         """Provide representation when printed"""
@@ -41,7 +42,7 @@ class User(db.model):
 
 
 class Milk(db.model):
-    """Milk for website"""
+    """Milk donations for website"""
 
     __tablename__ = "milk"
 
@@ -107,3 +108,15 @@ class Diet(db.model):
 
 def connect_to_db(app):
     """"Connect the database to the flask app"""
+
+    #Configure to PstgresSql database
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///orders'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    db.app = app
+    db.init_app(app)
+
+
+if __name__ == "__main__":
+    from server import app
+    connect_to_db(app)
+    print "Connected to db"
