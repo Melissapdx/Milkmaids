@@ -16,18 +16,19 @@ from datetime import datetime
 def load_users():
     """"Load users from user.data into database"""
     print "User"
+    User.query.delete()
 
     for row in open("seed_data/user.data"):
         row = row.rstrip()
+        print row
         user_id, firstname, lastname, username, password, address, zipcode, email = row.split('|')
-
         user = User(user_id=user_id, firstname=firstname, lastname=lastname,
         username=username, password=password, address=address, zipcode=zipcode, email=email)
 
-    #add user to database
-    db.session.add(user)
+        #add user to database
+        db.session.add(user)
 #commit user to database
-db.session.commit()
+    db.session.commit()
 
 if __name__ == "__main__":
     connect_to_db(app)

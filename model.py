@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
-class Order(db.model):
+class Order(db.Model):
     """Orders for website"""
 
     __tablename__ = "orders"
@@ -24,7 +24,7 @@ class Order(db.model):
         return "<Order order_id=%s user_id=%s order_status=%s order_date=%s>" % (self.order_id, self.user_id, self.order_status, self.order_date)
 
 
-class User(db.model):
+class User(db.Model):
     """Users of website"""
 
     __tablename__ = "users"
@@ -44,18 +44,18 @@ class User(db.model):
         return "<User user_id=%s firstname=%s lastname=%s username=%s password=%s address=%s zipcode=%s email=%s>" % (self.user_id, self.firstname, self.lastname, self.username, self.password, self.address, self.zipcode, self.email)
 
 
-class Milk(db.model):
+class Milk(db.Model):
     """Milk donations for website"""
 
     __tablename__ = "milk"
 
     milk_id = db.Column(db.Integer, primary_key=True)
-    smoker = db.Column(db.bool)
+    smoker = db.Column(db.Boolean)
     baby_age = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     price_per_oz = db.Column(db.Integer)
     inventory = db.Column(db.Integer)
-    date = db.Column(db.datetime)
+    date = db.Column(db.DateTime)
 
     #define relationship to user
     user = db.relationship("User", backref="milk")
@@ -66,7 +66,7 @@ class Milk(db.model):
         return "<Milk milk_id=%s smoker=%s baby_age=%s user_id=%s price_per_oz=%s inventory=%s date=%s>" % (self.milk_id, self.smoker, self.baby_age, self.user_id, self.price_per_oz, self.inventory, self.date)
 
 
-class Order_item(db.model):
+class Order_item(db.Model):
     """Items in Order"""
 
     __tablename__ = "order_items"
@@ -86,14 +86,14 @@ class Order_item(db.model):
         return "<Order_item order_item_id=%s order_id=%s milk_id=%s quantity=%s>" % (self.order_item_id, self.order_id, self.milk_id, self.quantity)
 
 
-class Milk_diet(db.model):
+class Milk_diet(db.Model):
     """Milk donated to milk website"""
 
     __tablename__ = "milk_diet"
 
     milk_diet_id = db.Column(db.Integer, primary_key=True)
-    milk_id = db.Column(db.Integer(30), db.ForeignKey('milk.milk_id'))
-    diet_id = db.Column(db.Integer(30), db.ForeignKey('diet.diet_id'))
+    milk_id = db.Column(db.Integer, db.ForeignKey('milk.milk_id'))
+    diet_id = db.Column(db.Integer, db.ForeignKey('diet.diet_id'))
 
     #define relationship to user
     user = db.relationship("Milk", backref="milk_diet")
@@ -104,7 +104,7 @@ class Milk_diet(db.model):
         return "<Milk_diet milk_diet_id=%s milk_id=%s diet_id=%s>" % (self.milk_diet_id, self.milk_id, self.diet_id)
 
 
-class Diet(db.model):
+class Diet(db.Model):
     """Stores diet information about milk"""
 
     __tablename__ = "diet"
@@ -124,7 +124,7 @@ def connect_to_db(app):
     """"Connect the database to the flask app"""
 
     #Configure to PstgresSql database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///orders'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///milkmaids'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
