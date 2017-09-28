@@ -15,19 +15,33 @@ from datetime import datetime
 
 def load_users():
     """"Load users from user.data into database"""
-    print "User"
+
     User.query.delete()
 
     for row in open("seed_data/user.data"):
         row = row.rstrip()
-        print row
         user_id, firstname, lastname, username, password, address, zipcode, email = row.split('|')
         user = User(user_id=user_id, firstname=firstname, lastname=lastname,
-        username=username, password=password, address=address, zipcode=zipcode, email=email)
+                    username=username, password=password, address=address, zipcode=zipcode, email=email)
 
         #add user to database
         db.session.add(user)
 #commit user to database
+    db.session.commit()
+
+
+def load_milk():
+    """Load items from milk data into database"""
+
+    Milk.query.delete()
+
+    for row in open("seed_data/milk.data"):
+        row = row.rstrip()
+        milk_id, smoker, baby_age, user_id, price_per_oz, inventory, date = row.split('|')
+        milk = Milk(milk_id=milk_id, smoker=smoker, baby_age=baby_age,
+                    user_id=user_id, price_per_oz=price_per_oz, inventory=inventory, date=date)
+
+        db.session.add(milk)
     db.session.commit()
 
 if __name__ == "__main__":
@@ -37,3 +51,4 @@ if __name__ == "__main__":
 
 #import different types of data
     load_users()
+    load_milk()
