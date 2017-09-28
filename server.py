@@ -12,6 +12,12 @@ app.secret_key = "ABC"
 #raises a error for undefined variable in jinja
 app.jinja_env.undefined = StrictUndefined
 
+
+@app.route('/')
+def index():
+    """Homepage"""
+    return render_template("index.html")
+
 if __name__ == "__main__":
 
     app.debug = True
