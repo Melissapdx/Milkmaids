@@ -16,8 +16,6 @@ from datetime import datetime
 def load_users():
     """"Load users from user.data into database"""
 
-    User.query.delete()
-
     for row in open("seed_data/user.data"):
         row = row.rstrip()
         user_id, firstname, lastname, username, password, address, zipcode, email = row.split('|')
@@ -33,7 +31,7 @@ def load_users():
 def load_milk():
     """Load items from milk data into database"""
 
-    Milk.query.delete()
+    #Milk.query.delete()
 
     for row in open("seed_data/milk.data"):
         row = row.rstrip()
@@ -44,11 +42,42 @@ def load_milk():
         db.session.add(milk)
     db.session.commit()
 
+
+def load_milk_diet():
+    """"Load milk diet data"""
+
+    #Milk_diet.query.delete()
+
+    for row in open("seed_data/milk_diet.data"):
+        row = row.rstrip()
+        milk_diet_id, milk_id, diet_id = row.split('|')
+        milk_diet = Milk_diet(milk_diet_id=milk_diet_id, milk_id=milk_id, diet_id=diet_id)
+
+        db.session.add(milk_diet)
+    db.session.commit()
+
+
+def load_diet():
+    """Load diet name information"""
+
+    #Diet.query.delete()
+
+    for row in open("seed_data/diet.data"):
+        row = row.rstrip()
+        diet_id, diet_name = row.split('|')
+        diet = Diet(diet_id=diet_id, diet_name=diet_name)
+
+        db.session.add(diet)
+    db.session.commit()
+
 if __name__ == "__main__":
     connect_to_db(app)
 # In case tables haven't been created, create them
+    db.drop_all()
     db.create_all()
 
 #import different types of data
     load_users()
     load_milk()
+    load_diet()
+    load_milk_diet()

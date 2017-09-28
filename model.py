@@ -77,8 +77,8 @@ class Order_item(db.Model):
     quantity = db.Column(db.Integer)
 
     #define relationship to user
-    user = db.relationship("Order", backref="order_items")
-    user = db.relationship("Milk", backref="order_items")
+    milk_order = db.relationship("Order", backref="order_items")
+    milk_item = db.relationship("Milk", backref="order_items")
 
     def __repr__(self):
         """Provide representation when printed"""
@@ -96,8 +96,8 @@ class Milk_diet(db.Model):
     diet_id = db.Column(db.Integer, db.ForeignKey('diet.diet_id'))
 
     #define relationship to user
-    user = db.relationship("Milk", backref="milk_diet")
-    user = db.relationship("Diet", backref="milk_diet")
+    milk = db.relationship("Milk", backref="milk_diet")
+    milk_diet = db.relationship("Diet", backref="milk_diet")
 
     def __repr__(self):
         """Provide representation when printed"""
