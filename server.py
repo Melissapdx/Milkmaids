@@ -46,7 +46,7 @@ def login_handler():
         if user.password == password:
             session["User ID"] = user.user_id
         else:
-            flash("Incorrect password")
+            flash("Incorrect password, Please enter correct password")
             return redirect("/login")
     else:
         flash("Email doesn't exist. Please sign up!")

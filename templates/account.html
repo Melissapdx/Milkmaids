@@ -18,7 +18,11 @@
     <input type="text" id="password" name="password"placeholder="Required">
     <button type="submit">Create Account</button>
 </form>
-
+<ul>
+  {% for message in get_flashed_messages() %}
+    <li>{{ message }}</li>
+  {% endfor %}
+</ul>
 <form action="/login" method="post">
     <h2>Sign In</h2>
     <label for="email_2" class="email_2">Email</label>
