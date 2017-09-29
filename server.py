@@ -18,6 +18,12 @@ def index():
     """Homepage"""
     return render_template("index.html")
 
+
+@app.route("/register", methods=["GET"])
+def register_form():
+    """display register form"""
+    return render_template("account.html")
+
 if __name__ == "__main__":
 
     app.debug = True
