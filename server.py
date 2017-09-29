@@ -41,26 +41,27 @@ def login_handler():
     password = request.form.get("password_2")
 
     user = User.query.filter_by(email=email).first()
-    user_name = user.firstname
-
-
+    #verify user login
     if user:
         if user.password == password:
             session["User ID"] = user.user_id
-            return redirect("/userhome")
         else:
             flash("Incorrect password")
             return redirect("/login")
     else:
         flash("Email doesn't exist. Please sign up!")
-    return redirect("/login")
+        return redirect("/login")
+    return redirect("/userhome/%s" % user.user_id)
 
 
-@app.route("/userhome")
-def user_homepage():
+@app.route("/userhome/<user_id>")
+def user_homepage(user_id):
     """Displays user homepage"""
-    flash("Welcome!You are logged in")
-    return render_template("user_homepage.html")
+    user = User.query.filter_by(user_id=user_id).one()
+    print user
+
+    flash("Welcome!")
+    return render_template("user_homepage.html", user=user)
 
 
 if __name__ == "__main__":
