@@ -1,0 +1,8 @@
+{%extends 'base.html'%}
+{%block content%}
+<ul>
+  {% for message in get_flashed_messages() %}
+    <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{%endblock%}

@@ -9,7 +9,7 @@ class Order(db.Model):
 
     __tablename__ = "orders"
 
-    order_id = db.Column(db.Integer, primary_key=True)
+    order_id = db.Column(db.Integer, autoincrement=True,primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     order_status = db.Column(db.String(30))
     order_date = db.Column(db.DateTime)
@@ -29,7 +29,7 @@ class User(db.Model):
 
     __tablename__ = "users"
 
-    user_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer,autoincrement=True, primary_key=True)
     firstname = db.Column(db.String(50), nullable=True)
     lastname = db.Column(db.String(50), nullable=True)
     username = db.Column(db.String(64), nullable=True)
@@ -49,7 +49,7 @@ class Milk(db.Model):
 
     __tablename__ = "milk"
 
-    milk_id = db.Column(db.Integer, primary_key=True)
+    milk_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     smoker = db.Column(db.Boolean)
     baby_age = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
@@ -71,7 +71,7 @@ class Order_item(db.Model):
 
     __tablename__ = "order_items"
 
-    order_item_id = db.Column(db.Integer, primary_key=True)
+    order_item_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     order_id = db.Column(db.Integer, db.ForeignKey('orders.order_id'))
     milk_id = db.Column(db.Integer, db.ForeignKey('milk.milk_id'))
     quantity = db.Column(db.Integer)
@@ -91,7 +91,7 @@ class Milk_diet(db.Model):
 
     __tablename__ = "milk_diet"
 
-    milk_diet_id = db.Column(db.Integer, primary_key=True)
+    milk_diet_id = db.Column(db.Integer,autoincrement=True, primary_key=True)
     milk_id = db.Column(db.Integer, db.ForeignKey('milk.milk_id'))
     diet_id = db.Column(db.Integer, db.ForeignKey('diet.diet_id'))
 
@@ -109,7 +109,7 @@ class Diet(db.Model):
 
     __tablename__ = "diet"
 
-    diet_id = db.Column(db.Integer, primary_key=True)
+    diet_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     diet_name = db.Column(db.String(64))
 
     def __repr__(self):
