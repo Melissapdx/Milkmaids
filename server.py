@@ -26,6 +26,32 @@ def register_form():
     return render_template("account.html")
 
 
+@app.route("/login", methods=["POST"])
+def register_process():
+    """Process registration, add to database if user does not exist"""
+
+    email = request.form.get("email")
+    password = request.form.get("password")
+    firstname = request.form.get("firstname")
+    lastname = request.form.get("lastname")
+    address = request.form.get("address")
+    zipcode = request.form.get("zipcode")
+
+    user_check = User.query.filter_by(email=email).all()
+
+    if user_check == []:
+        new_user = User(email=email, password=password, firstname=firstname,
+                        lastname=lastname, address=address, zipcode=zipcode)
+        db.session.add(new_user)
+    ## add flash and redirect to sign in page if exists
+    else:
+        flash('Looks like you already have an account. Sign in!')
+        return redirect("/login")
+
+    db.session.commit()
+
+    return redirect("/")
+
 @app.route("/login")
 def login_form():
     """Displays login form"""
@@ -53,6 +79,13 @@ def login_handler():
         return redirect("/login")
     return redirect("/userhome/%s" % user.user_id)
 
+@app.route("/logout")
+def logout_handler():
+    """logs users out"""
+
+    session.pop("User ID", None)
+    flash("You are currently logged out")
+    return redirect("/")
 
 @app.route("/userhome/<user_id>")
 def user_homepage(user_id):
