@@ -79,6 +79,7 @@ def login_handler():
         return redirect("/login")
     return redirect("/userhome/%s" % user.user_id)
 
+
 @app.route("/logout")
 def logout_handler():
     """logs users out"""
@@ -86,6 +87,7 @@ def logout_handler():
     session.pop("User ID", None)
     flash("You are currently logged out")
     return redirect("/")
+
 
 @app.route("/userhome/<user_id>")
 def user_homepage(user_id):
@@ -95,6 +97,13 @@ def user_homepage(user_id):
 
     flash("Welcome!")
     return render_template("user_homepage.html", user=user)
+
+
+@app.route("/shop")
+def shop():
+    """Displays product page for customers to shop"""
+
+    return render_template("shop.html")
 
 
 if __name__ == "__main__":
