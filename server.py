@@ -105,10 +105,12 @@ def shop():
 
     return render_template("shop.html")
 
+
 @app.route("/milk.json")
 def get_milk_info():
     """Get information on milk products to display to user"""
-    milk_products = db.session.query(Milk,Milk_diet).join(Milk_diet).all()
+    milk_products = db.session.query(Milk, Milk_diet).join(Milk_diet).all()
+    print milk_products
     milk_output = []
     for (milk, diet) in milk_products:
         milk_output.append({
@@ -119,9 +121,9 @@ def get_milk_info():
             "price_per_oz": milk.price_per_oz,
             "inventory": milk.inventory,
             "date": milk.date.isoformat(),
-            "diet_id": diet.diet_id
+            "diet_id": diet.milk_diet.diet_name
         })
-    return Response(json.dumps(milk_output))
+    return jsonify(milk_output)
 
 if __name__ == "__main__":
 
