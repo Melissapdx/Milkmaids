@@ -1,7 +1,7 @@
 """"Milk donation website"""
 from jinja2 import StrictUndefined
 
-from flask import (Flask, jsonify, json, render_template, redirect, request, flash, session)
+from flask import Response, Flask, jsonify, json, render_template, redirect, request, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import connect_to_db, db, Order, User, Milk, Order_item, Milk_diet, Diet
@@ -105,14 +105,23 @@ def shop():
 
     return render_template("shop.html")
 
-
 @app.route("/milk.json")
 def get_milk_info():
     """Get information on milk products to display to user"""
     milk_products = db.session.query(Milk,Milk_diet).join(Milk_diet).all()
-    for item in milk_products:
-        print item[0].baby_age
-
+    milk_output = []
+    for (milk, diet) in milk_products:
+        milk_output.append({
+            "milk_id": milk.milk_id,
+            "smoker": milk.smoker,
+            "baby_age": milk.baby_age,
+            "user_id": milk.user_id,
+            "price_per_oz": milk.price_per_oz,
+            "inventory": milk.inventory,
+            "date": milk.date.isoformat(),
+            "diet_id": diet.diet_id
+        })
+    return Response(json.dumps(milk_output))
 
 if __name__ == "__main__":
 
