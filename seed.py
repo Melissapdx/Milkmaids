@@ -31,13 +31,15 @@ def load_users():
 def load_milk():
     """Load items from milk data into database"""
 
-    #Milk.query.delete()
-
     for row in open("seed_data/milk.data"):
         row = row.rstrip()
         milk_id, smoker, baby_age, user_id, price_per_oz, inventory, date = row.split('|')
+
+        if date:
+            date = datetime.strptime(date, "%m-%d-%Y").date()
+
         milk = Milk(milk_id=milk_id, smoker=smoker, baby_age=baby_age,
-                    user_id=user_id, price_per_oz=price_per_oz, inventory=inventory, date=date)
+                    user_id=user_id, price_per_oz=price_per_oz, date=date, inventory=inventory)
 
         db.session.add(milk)
     db.session.commit()
@@ -45,8 +47,6 @@ def load_milk():
 
 def load_milk_diet():
     """"Load milk diet data"""
-
-    #Milk_diet.query.delete()
 
     for row in open("seed_data/milk_diet.data"):
         row = row.rstrip()
@@ -59,8 +59,6 @@ def load_milk_diet():
 
 def load_diet():
     """Load diet name information"""
-
-    #Diet.query.delete()
 
     for row in open("seed_data/diet.data"):
         row = row.rstrip()

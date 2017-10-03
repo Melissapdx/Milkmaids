@@ -1,7 +1,7 @@
 """"Milk donation website"""
 from jinja2 import StrictUndefined
 
-from flask import (Flask, jsonify, render_template, redirect, request, flash, session)
+from flask import (Flask, jsonify, json, render_template, redirect, request, flash, session)
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import connect_to_db, db, Order, User, Milk, Order_item, Milk_diet, Diet
@@ -92,8 +92,8 @@ def logout_handler():
 @app.route("/userhome/<user_id>")
 def user_homepage(user_id):
     """Displays user homepage"""
+
     user = User.query.filter_by(user_id=user_id).one()
-    print user
 
     flash("Welcome!")
     return render_template("user_homepage.html", user=user)
@@ -104,6 +104,14 @@ def shop():
     """Displays product page for customers to shop"""
 
     return render_template("shop.html")
+
+
+@app.route("/milk.json")
+def get_milk_info():
+    """Get information on milk products to display to user"""
+    milk_products = db.session.query(Milk,Milk_diet).join(Milk_diet).all()
+    for item in milk_products:
+        print item[0].baby_age
 
 
 if __name__ == "__main__":
