@@ -40,6 +40,11 @@ function success(data) {
             glutenFree3.push(milk);
         }
     });
+
+    $('.buy_button').on('click',function() {
+        $('#product').html(vegetarianDiet);
+    });
+
 }
 
 function getRequest(){
