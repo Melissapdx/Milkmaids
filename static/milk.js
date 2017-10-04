@@ -1,6 +1,8 @@
 
 function success(data) {
     //process data for shopping page
+    //come back and make this more dry
+    //items with a console.log need data made for them
     console.log(data);
     var vegetarianDiet = [];
     var veganDiet = [];
@@ -23,6 +25,19 @@ function success(data) {
             console.log(glutenFree);
         } else if(milk.diet_name ==='Omnivore'){
             omnivore.push(milk);
+        } else if(milk.diet_name ==='Vegetarian'&& milk.baby_age >2 && milk.baby_age <=6) {
+            vegetarianDiet2.push(milk);
+        } else if(milk.diet_name ==='Vegan'&& milk.baby_age >2 && milk.baby_age <=6) {
+            veganDiet2.push(milk);
+        } else if(milk.diet_name ==='Gluten-Free'&& milk.baby_age >2 && milk.baby_age <=6) {
+            glutenFree2.push(milk);
+        } else if(milk.diet_name === 'Vegetarian' && milk.baby_age > 6) {
+            vegetarianDiet3.push(milk);
+        } else if(milk.diet_name === 'Vegan' && milk.baby_age > 6) {
+            veganDiet3.push(milk);
+            console.log(veganDiet3);
+        } else if(milk.diet_name === 'Gluten-Free' && milk.baby_age > 6) {
+            glutenFree3.push(milk);
         }
     });
 }
