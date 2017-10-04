@@ -145,6 +145,12 @@ def display_cart():
 
     return render_template("cart.html")
 
+@app.route("/checkout")
+def checkout():
+    """checkout via stripe"""
+
+    return render_template("checkout.html")
+
 if __name__ == "__main__":
 
     app.debug = True
