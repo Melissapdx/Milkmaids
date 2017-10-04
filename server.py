@@ -121,9 +121,16 @@ def get_milk_info():
             "price_per_oz": milk.price_per_oz,
             "inventory": milk.inventory,
             "date": milk.date.isoformat(),
-            "diet_id": diet.milk_diet.diet_name
+            "diet_name": diet.milk_diet.diet_name
         })
     return jsonify(milk_output)
+
+
+@app.route("/cart")
+def display_cart():
+    """Display items in shopping cart"""
+
+    return render_template("cart.html")
 
 if __name__ == "__main__":
 
