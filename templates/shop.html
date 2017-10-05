@@ -13,51 +13,50 @@
   <li><a href="#">Gluten-Free</a></li>
   <li><a href="#">Omnivore</a></li>
 </ul>
+<a href ="/cart">Shopping cart</a>
 <div id = "product">
 {% for item in milk_output %}
     {% if item.diet_name == 'Vegetarian' %}
     <img src= "https://www.fillmurray.com/200/300">
-        <button type="submit" class="buy_button">Buy</button>
+        <button type="submit" class="buy_button" data-tooltip={{item.diet_name}},{{item.baby_age}},{{item.price_per_oz}},{{item.inventory}}>Buy</button>
         <p>Diet:{{item.diet_name}}</p>
         <p>Babie's Age:{{item.baby_age}} Months</p>
         <p>Price Per OZ: ${{item.price_per_oz}} </p>
         <p>Ounces available:{{item.inventory}}</p>
         <p>Date received:{{item.date}}</p>
-    {% elif item.smoker == false %}
-        <p>Smoker: No</p>
-    {%endif%}
+    {% endif %}
 {% endfor %}
 {% for item in milk_output %}
     {% if item.diet_name == 'Vegan' %}
     <img src= "https://www.placecage.com/200/300">
-        <button type="submit" class="buy_button">Buy</button>
-        <p>{{item.diet_name}}</p>
-        <p>{{item.baby_age}}</p>
+        <button type="submit" class="buy_button" data-tooltip={{item.diet_name}},{{item.baby_age}},{{item.price_per_oz}},{{item.inventory}}>Buy</button>
+        <p>Diet: {{item.diet_name}}</p>
+        <p>Babie's Age:{{item.baby_age}}</p>
         <p>Price Per OZ: ${{item.price_per_oz}} </p>
-        <p>Ounces available:{{item.inventory}}</p>
-        <p>Date received:{{item.date}}</p>
+        <p>Ounces available: {{item.inventory}}</p>
+        <p>Date received: {{item.date}}</p>
     {%endif%}
 {% endfor %}
 {% for item in milk_output %}
     {% if item.diet_name == 'Gluten-Free' %}
     <img src= "http://www.fillmurray.com/200/300">
-        <button type="submit" class="buy_button">Buy</button>
-        <p>{{item.diet_name}}</p>
-        <p>{{item.baby_age}}</p>
+        <button type="submit" class="buy_button" data-tooltip={{item.diet_name}},{{item.baby_age}},{{item.price_per_oz}},{{item.inventory}}>Buy</button>
+        <p>Diet: {{item.diet_name}}</p>
+        <p>Babie's Age: {{item.baby_age}}</p>
         <p>Price Per OZ: ${{item.price_per_oz}} </p>
-        <p>Ounces available:{{item.inventory}}</p>
-        <p>Date received:{{item.date}}</p>
+        <p>Ounces available: {{item.inventory}}</p>
+        <p>Date received: {{item.date}}</p>
     {%endif%}
 {% endfor %}
 {% for item in milk_output %}
     {% if item.diet_name == 'Omnivore' %}
     <img src= "http://www.fillmurray.com/200/300">
-        <button type="submit" class="buy_button">Buy</button>
-        <p>{{item.diet_name}}</p>
-        <p>{{item.baby_age}}</p>
+        <button type="submit" class="buy_button" data-tooltip={{item.diet_name}},{{item.baby_age}},{{item.price_per_oz}},{{item.inventory}}>Buy</button>
+        <p> Diet: {{item.diet_name}}</p>
+        <p> Babie's Age: {{item.baby_age}}</p>
         <p>Price Per OZ: ${{item.price_per_oz}} </p>
-        <p>Ounces available:{{item.inventory}}</p>
-        <p>Date received:{{item.date}}</p>
+        <p>Ounces available: {{item.inventory}}</p>
+        <p>Date received: {{item.date}}</p>
     {%endif%}
 {% endfor %}
 

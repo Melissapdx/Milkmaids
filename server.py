@@ -99,26 +99,6 @@ def user_homepage(user_id):
     return render_template("user_homepage.html", user=user)
 
 
-@app.route("/milk.json")
-def get_milk_info():
-    """Get information on milk products to display to user"""
-    milk_products = db.session.query(Milk, Milk_diet).join(Milk_diet).all()
-    print milk_products
-    milk_output = []
-    for (milk, diet) in milk_products:
-        milk_output.append({
-            "milk_id": milk.milk_id,
-            "smoker": milk.smoker,
-            "baby_age": milk.baby_age,
-            "user_id": milk.user_id,
-            "price_per_oz": milk.price_per_oz,
-            "inventory": milk.inventory,
-            "date": milk.date.isoformat(),
-            "diet_name": diet.milk_diet.diet_name
-        })
-    return jsonify(milk_output)
-
-
 @app.route("/shop")
 def get_milk():
     """Get information on milk products to display to user"""
@@ -139,11 +119,27 @@ def get_milk():
     return render_template("shop.html", milk_output=milk_output)
 
 
+@app.route("/add_to_cart/<milk_output>")
+def add_to_cart(milk_output):
+    """Add a Milk item to cart"""
+
+    if 'cart' in session:
+        cart = session['cart']
+    else:
+        cart = session['cart'] = {}
+
+    cart[milk_output] = cart.get(milk_output, 0) + 1
+    print cart
+    flash("Successfully added to cart.")
+
+    #return redirect("/cart")success message
+
 @app.route("/cart")
 def display_cart():
     """Display items in shopping cart"""
 
     return render_template("cart.html")
+
 
 @app.route("/checkout")
 def checkout():
