@@ -119,26 +119,26 @@ def get_milk():
     return render_template("shop.html", milk_output=milk_output)
 
 
-@app.route("/add_to_cart/<milk_output>")
-def add_to_cart(milk_output):
+@app.route('/add_to_cart')
+def add_to_cart():
     """Add a Milk item to cart"""
-
+    milk = request.args.get('milk')
     if 'cart' in session:
         cart = session['cart']
     else:
         cart = session['cart'] = {}
 
-    cart[milk_output] = cart.get(milk_output, 0) + 1
+    cart[milk] = cart.get(milk, 0) + 1
     print cart
-    flash("Successfully added to cart.")
 
-    #return redirect("/cart")success message
+    return('Item added to cart')
 
 @app.route("/cart")
 def display_cart():
     """Display items in shopping cart"""
-
-    return render_template("cart.html")
+ #unpack items add to session
+ #display items
+    return 'it worked'
 
 
 @app.route("/checkout")
@@ -155,6 +155,6 @@ if __name__ == "__main__":
     connect_to_db(app)
 
     # Use the DebugToolbar
-    DebugToolbarExtension(app)
+    # DebugToolbarExtension(app)
 
     app.run(port=5000, host='0.0.0.0')
