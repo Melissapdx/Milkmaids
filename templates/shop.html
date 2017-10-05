@@ -7,37 +7,59 @@
   <li><a href="contact.asp">Donate</a></li>
   <li><a href="about.asp">Contact</a></li>
 </ul>
+<ul class = "milk-nav">
+  <li><a href="#">Vegetarian</a></li>
+  <li><a href="#">Vegan</a></li>
+  <li><a href="#">Gluten-Free</a></li>
+  <li><a href="#">Omnivore</a></li>
+</ul>
 <div id = "product">
-<h1 id = "baby-age">0-2 months</h1>
+{% for item in milk_output %}
+    {% if item.diet_name == 'Vegetarian' %}
     <img src= "https://www.fillmurray.com/200/300">
         <button type="submit" class="buy_button">Buy</button>
-        <p>Vegetarian</p>
-    <img src= "https://www.fillmurray.com/g/200/300">
+        <p>Diet:{{item.diet_name}}</p>
+        <p>Babie's Age:{{item.baby_age}} Months</p>
+        <p>Price Per OZ: ${{item.price_per_oz}} </p>
+        <p>Ounces available:{{item.inventory}}</p>
+        <p>Date received:{{item.date}}</p>
+    {% elif item.smoker == false %}
+        <p>Smoker: No</p>
+    {%endif%}
+{% endfor %}
+{% for item in milk_output %}
+    {% if item.diet_name == 'Vegan' %}
+    <img src= "https://www.placecage.com/200/300">
         <button type="submit" class="buy_button">Buy</button>
-        <p>Vegan</p>
-    <img src= "https://www.fillmurray.com/200/300">
+        <p>{{item.diet_name}}</p>
+        <p>{{item.baby_age}}</p>
+        <p>Price Per OZ: ${{item.price_per_oz}} </p>
+        <p>Ounces available:{{item.inventory}}</p>
+        <p>Date received:{{item.date}}</p>
+    {%endif%}
+{% endfor %}
+{% for item in milk_output %}
+    {% if item.diet_name == 'Gluten-Free' %}
+    <img src= "http://www.fillmurray.com/200/300">
         <button type="submit" class="buy_button">Buy</button>
-        <p>Gluten-free</p>
-<h1 id = "baby-age">3-6 months</h1>
-        <img src= "https://www.fillmurray.com/200/300">
+        <p>{{item.diet_name}}</p>
+        <p>{{item.baby_age}}</p>
+        <p>Price Per OZ: ${{item.price_per_oz}} </p>
+        <p>Ounces available:{{item.inventory}}</p>
+        <p>Date received:{{item.date}}</p>
+    {%endif%}
+{% endfor %}
+{% for item in milk_output %}
+    {% if item.diet_name == 'Omnivore' %}
+    <img src= "http://www.fillmurray.com/200/300">
         <button type="submit" class="buy_button">Buy</button>
-        <p>Vegetarian</p>
-    <img src= "https://www.fillmurray.com/g/200/300">
-        <button type="submit" class="buy_button">Buy</button>
-        <p>Vegan</p>
-    <img src= "https://www.fillmurray.com/200/300">
-        <button type="submit" class="buy_button">Buy</button>
-        <p>Gluten-free</p>
-<h1 id = "baby-age">7-12 months</h1>
-    <img src= "https://www.fillmurray.com/200/300">
-        <button type="submit" class="buy_button">Buy</button>
-        <p>Vegetarian</p>
-    <img src= "https://www.fillmurray.com/g/200/300">
-        <button type="submit" class="buy_button">Buy</button>
-        <p>Vegan</p>
-    <img src= "https://www.fillmurray.com/200/300">
-        <button type="submit" class="buy_button">Buy</button>
-        <p>Gluten-free</p>
+        <p>{{item.diet_name}}</p>
+        <p>{{item.baby_age}}</p>
+        <p>Price Per OZ: ${{item.price_per_oz}} </p>
+        <p>Ounces available:{{item.inventory}}</p>
+        <p>Date received:{{item.date}}</p>
+    {%endif%}
+{% endfor %}
 
 </div>
 
