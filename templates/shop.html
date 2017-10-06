@@ -13,7 +13,8 @@
   <li><a href="#">Gluten-Free</a></li>
   <li><a href="#">Omnivore</a></li>
 </ul>
-<a href ="/cart">Shopping cart</a>
+<a href ="/cart" id='shop'>Shopping cart</a>
+<div id= 'cart'></div>
 <div id = "product">
 {% for item in milk_output %}
     {% if item.diet_name == 'Vegetarian' %}

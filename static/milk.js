@@ -1,7 +1,7 @@
 
 function addToCart(milk) {
     $.get('/add_to_cart', {milk: milk}, function(data) {
-        $('body').html(data);
+        $('#cart').html(data);
     });
 }
 

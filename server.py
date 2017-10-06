@@ -129,16 +129,14 @@ def add_to_cart():
         cart = session['cart'] = {}
 
     cart[milk] = cart.get(milk, 0) + 1
-    print cart
 
-    return('Item added to cart')
+    return ("Item added to cart")
 
 @app.route("/cart")
 def display_cart():
     """Display items in shopping cart"""
  #unpack items add to session
  #display items
-    return 'it worked'
 
 
 @app.route("/checkout")
