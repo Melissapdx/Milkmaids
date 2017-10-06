@@ -121,27 +121,41 @@ def get_milk():
 
 @app.route('/add_to_cart')
 def add_to_cart():
-    """Add a Milk item to cart"""
-    milk = request.args.get('milk')
+    """
+    Add a Milk item to cart
+    """
+    milk = request.args.get('milk', None)
+    if milk is None:
+        return
+    milk_data = milk.split(',')
     if 'cart' in session:
         cart = session['cart']
     else:
         cart = session['cart'] = {}
-
-    cart[milk] = cart.get(milk, 0) + 1
+    cart['order'] = milk_data
+    session['cart'] = cart
     html = "Item added to cart!"
     return (html)
 
 
 @app.route("/cart")
 def display_cart():
-    """Display items in shopping cart"""
-
+    """
+    Display items in shopping cart
+    cart_items = {[
+        diet_name,
+        how_many_oz,
+        price_per_oz,
+    ]}
+    total_cost = sum of items' cost
+    """
     cart = session.get("cart", {})
-    for item in cart:
-        print item
-
-    return render_template("cart.html")
+    for item in cart.values():
+        diet = item[0]
+        oz_cost = int(item[2])
+        ounces = int(item[3])
+        total_cost = ounces * oz_cost
+    return render_template("cart.html", cart=cart, diet=diet, total_cost=total_cost, ounces=ounces)
 
 
 @app.route("/checkout")
