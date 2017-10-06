@@ -138,8 +138,8 @@ def display_cart():
     """Display items in shopping cart"""
 
     cart = session.get("cart", {})
-    for item, quantity in cart:
-        print item, quantity
+    for item in cart:
+        print item
 
     return render_template("cart.html")
 
