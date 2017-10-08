@@ -5,12 +5,32 @@ body{
     background-size: cover;
     background-position: center center;
     min-height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+    padding:0;
+    margin:0;
 }
 
 .nav {
     list-style: none;
+    background-color: #fff;
+    width:100%;
+    padding: 15px 0;
 }
 
 .nav li{
     display:inline;
+
 }
+ .nav a{
+    text-decoration: none;
+    color:red;
+    margin-left: 40px;
+ }
+#checkout{
+    float:right;
+    margin-right: 30px;
+}
+ img{
+    display: block;
+    margin: 0 auto;
+ }
