@@ -1,0 +1,16 @@
+/* general page styles */
+body{
+    background:url("/static/img/milkbottle.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    min-height: 100vh;
+}
+
+.nav {
+    list-style: none;
+}
+
+.nav li{
+    display:inline;
+}

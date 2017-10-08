@@ -6,7 +6,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 from model import connect_to_db, db, Order, User, Milk, Order_item, Milk_diet, Diet
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 app.secret_key = "ABC"
 #raises a error for undefined variable in jinja
@@ -125,15 +125,17 @@ def add_to_cart():
     Add a Milk item to cart
     """
     milk = request.args.get('milk', None)
+    milk = int(milk)
     if milk is None:
         return
-    milk_data = milk.split(',')
     if 'cart' in session:
         cart = session['cart']
+        cart['order'].append(milk)
     else:
         cart = session['cart'] = {}
-    cart['order'] = milk_data
+        cart['order'] = [(milk)]
     session['cart'] = cart
+
     html = "Item added to cart!"
     return (html)
 
@@ -149,13 +151,22 @@ def display_cart():
     ]}
     total_cost = sum of items' cost
     """
+    #get cart from session
     cart = session.get("cart", {})
-    for item in cart.values():
-        diet = item[0]
-        oz_cost = int(item[2])
-        ounces = int(item[3])
-        total_cost = ounces * oz_cost
-    return render_template("cart.html", cart=cart, diet=diet, total_cost=total_cost, ounces=ounces)
+    print cart
+    #query database with milk_id
+
+    for key, value in cart.iteritems():
+        print key, value
+        milk_ids = value
+        print "milk_ids", milk_ids
+    #write another for loop and query each item, store the results from query in a list
+    print "final milk id is", milk_ids
+    #if len(milk_ids) == 1:
+    milk_query = milk_ids
+    print "MILK:", milk_query
+
+    return render_template("cart.html", cart=cart)
 
 
 @app.route("/checkout")

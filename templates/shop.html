@@ -19,7 +19,7 @@
 {% for item in milk_output %}
     {% if item.diet_name == 'Vegetarian' %}
     <img src= "https://www.fillmurray.com/200/300">
-        <button type="submit" class="buy_button" data-tooltip="{{item.diet_name}},{{item.baby_age}},{{item.price_per_oz}},{{item.inventory}}">Buy</button>
+        <button type="submit" class="buy_button" data-tooltip="{{item.milk_id}}">Buy</button>
         <p>Diet:{{item.diet_name}}</p>
         <p>Babie's Age:{{item.baby_age}} Months</p>
         <p>Price Per OZ: ${{item.price_per_oz}} </p>
@@ -30,7 +30,7 @@
 {% for item in milk_output %}
     {% if item.diet_name == 'Vegan' %}
     <img src= "https://www.placecage.com/200/300">
-        <button type="submit" class="buy_button" data-tooltip="{{item.diet_name}},{{item.baby_age}},{{item.price_per_oz}},{{item.inventory}}">Buy</button>
+        <button type="submit" class="buy_button" data-tooltip="{{item.milk_id}}">Buy</button>
         <p>Diet: {{item.diet_name}}</p>
         <p>Babie's Age:{{item.baby_age}}</p>
         <p>Price Per OZ: ${{item.price_per_oz}} </p>
@@ -41,7 +41,7 @@
 {% for item in milk_output %}
     {% if item.diet_name == 'Gluten-Free' %}
     <img src= "http://www.fillmurray.com/200/300">
-        <button type="submit" class="buy_button" data-tooltip="{{item.diet_name}},{{item.baby_age}},{{item.price_per_oz}},{{item.inventory}}">Buy</button>
+        <button type="submit" class="buy_button" data-tooltip="{{item.milk_id}}">Buy</button>
         <p>Diet: {{item.diet_name}}</p>
         <p>Babie's Age: {{item.baby_age}}</p>
         <p>Price Per OZ: ${{item.price_per_oz}} </p>
@@ -52,7 +52,7 @@
 {% for item in milk_output %}
     {% if item.diet_name == 'Omnivore' %}
     <img src= "http://www.fillmurray.com/200/300">
-        <button type="submit" class="buy_button" data-tooltip="{{item.diet_name}},{{item.baby_age}},{{item.price_per_oz}},{{item.inventory}}">Buy</button>
+        <button type="submit" class="buy_button" data-tooltip="{{item.milk_id}}">Buy</button>
         <p> Diet: {{item.diet_name}}</p>
         <p> Babie's Age: {{item.baby_age}}</p>
         <p>Price Per OZ: ${{item.price_per_oz}} </p>
