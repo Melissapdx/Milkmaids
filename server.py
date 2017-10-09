@@ -146,6 +146,8 @@ def display_cart():
     Display items in shopping cart
     cart_items = {[
         diet_name,
+        baby_age,
+        smoker,
         how_many_oz,
         price_per_oz,
     ]}
@@ -154,18 +156,20 @@ def display_cart():
     #get cart from session
     cart = session.get("cart", {})
     print cart
+    cart_items =[]
     #query database with milk_id
-
     for key, value in cart.iteritems():
         print key, value
         milk_ids = value
         print "milk_ids", milk_ids
-    #write another for loop and query each item, store the results from query in a list
-    print "final milk id is", milk_ids
-    #if len(milk_ids) == 1:
-    milk_query = milk_ids
-    print "MILK:", milk_query
-
+    #write another for loop and query database with each milk_id, store the results from query in a list
+    for milk_item in milk_ids:
+        print milk_item
+        milk_query = db.session.query(Milk, Milk_diet).join(Milk_diet).filter_by(milk_id=milk_item).one()
+    #append query results to cart items list
+        cart_items.append(milk_query)
+    for item in cart_items:
+        print item
     return render_template("cart.html", cart=cart)
 
 
