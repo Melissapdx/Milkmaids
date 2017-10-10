@@ -179,8 +179,13 @@ def display_cart():
 def checkout():
     """checkout via stripe"""
     user = session.get("User ID")
+    user_query = User.query.filter_by(user_id=user).one()
     if user is not None:
-         return render_template("checkout.html")
+        fname = user_query.firstname
+        lname = user_query.lastname
+        address = user_query.address
+        zipcode = user_query.zipcode
+        return render_template("checkout.html", address=address, zipcode=zipcode, fname=fname, lname=lname)
     else:
         flash('Please login or signup')
         return redirect("/login")

@@ -1,7 +1,11 @@
 {%extends 'base.html'%}
-<script src="/static/checkout.js"></script>
-<script src="https://js.stripe.com/v3/"></script>
 {% block content %}
+<p>Ship to:</p>
+  <p>{{fname}} {{lname}}</p>
+  <p>{{address}}</p>
+  <p> {{zipcode}}</p>
+</form>
+
 <form action="/charge" method="post" id="payment-form">
   <div class="form-row">
     <label for="card-element">
@@ -17,4 +21,7 @@
 
   <button>Submit Payment</button>
 </form>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="/static/checkout.js"></script>
+
 {% endblock %}
