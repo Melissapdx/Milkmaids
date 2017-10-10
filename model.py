@@ -9,7 +9,7 @@ class Order(db.Model):
 
     __tablename__ = "orders"
 
-    order_id = db.Column(db.Integer, autoincrement=True,primary_key=True)
+    order_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     order_status = db.Column(db.String(30))
     order_date = db.Column(db.DateTime)

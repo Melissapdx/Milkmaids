@@ -133,9 +133,9 @@ def add_to_cart():
         cart['order'].append(milk)
     else:
         cart = session['cart'] = {}
-        cart['order'] = [(milk)]
-    session['cart'] = cart
+        cart['order'] = [milk]
 
+    session['cart'] = cart
     html = "Item added to cart!"
     return (html)
 
@@ -155,22 +155,19 @@ def display_cart():
     """
     #get cart from session
     cart = session.get("cart", {})
-    print cart
-    cart_items =[]
-    #query database with milk_id
-    for key, value in cart.iteritems():
-        print key, value
-        milk_ids = value
-        print "milk_ids", milk_ids
-    #write another for loop and query database with each milk_id, store the results from query in a list
+    cart_items = []
+    milk_ids = cart.get("order")
+    print milk_ids
     for milk_item in milk_ids:
-        print milk_item
         milk_query = db.session.query(Milk, Milk_diet).join(Milk_diet).filter_by(milk_id=milk_item).one()
-    #append query results to cart items list
         cart_items.append(milk_query)
-    for item in cart_items:
-        print item
-    return render_template("cart.html", cart=cart)
+        print cart_items
+    # milk_prices = []
+    # for item in cart_items:
+    #     milk_cost = item.Milk.price_per_oz * item.Milk.inventory
+    #     milk_prices.append(milk_cost)
+
+    return render_template("cart.html", cart_items=cart_items)
 
 
 @app.route("/checkout")
