@@ -14,6 +14,7 @@
     <p>Ounces ordered:{{ item.price_per_oz }} </p>
     <p>Price:{{ item.inventory * item.price_per_oz }} </p>
 {%endfor%}
+<p>Order cost: {{order_cost}}</p>
 </div>
 <a href ="/checkout">Checkout</a>
 <script src="http://code.jquery.com/jquery.js"></script>

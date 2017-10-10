@@ -157,17 +157,19 @@ def display_cart():
     cart = session.get("cart", {})
     cart_items = []
     milk_ids = cart.get("order")
-    print milk_ids
     for milk_item in milk_ids:
         milk_query = db.session.query(Milk, Milk_diet).join(Milk_diet).filter_by(milk_id=milk_item).one()
         cart_items.append(milk_query)
-        print cart_items
-    # milk_prices = []
-    # for item in cart_items:
-    #     milk_cost = item.Milk.price_per_oz * item.Milk.inventory
-    #     milk_prices.append(milk_cost)
+    milk_prices = []
+    for item in cart_items:
+        milk_cost = item.Milk.price_per_oz * item.Milk.inventory
+        milk_prices.append(milk_cost)
+    count = 0
+    for item in milk_prices:
+        count += item
+    order_cost = count
 
-    return render_template("cart.html", cart_items=cart_items)
+    return render_template("cart.html", cart_items=cart_items, order_cost=order_cost)
 
 
 @app.route("/checkout")
