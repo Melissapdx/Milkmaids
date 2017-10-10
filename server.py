@@ -26,7 +26,7 @@ def register_form():
     return render_template("account.html")
 
 
-@app.route("/login", methods=["POST"])
+@app.route("/register", methods=["POST"])
 def register_process():
     """Process registration, add to database if user does not exist"""
 
@@ -157,6 +157,7 @@ def display_cart():
     cart = session.get("cart", {})
     cart_items = []
     milk_ids = cart.get("order")
+    print milk_ids
     if milk_ids is not None:
         for milk_item in milk_ids:
             milk_query = db.session.query(Milk, Milk_diet).join(Milk_diet).filter_by(milk_id=milk_item).one()
@@ -177,8 +178,12 @@ def display_cart():
 @app.route("/checkout")
 def checkout():
     """checkout via stripe"""
-
-    return render_template("checkout.html")
+    user = session.get("User ID")
+    if user is not None:
+         return render_template("checkout.html")
+    else:
+        flash('Please login or signup')
+        return redirect("/login")
 
 if __name__ == "__main__":
 

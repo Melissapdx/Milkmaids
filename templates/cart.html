@@ -12,17 +12,19 @@
     <p>Your shopping bag is empty but you can change that!</p>
     <a href="/shop">Shop Now</a>
 {% else %}
-    {% for item,diet in cart_items %}
-        <p>Milk id: {{ item.milk_id }}</p>
-        <p>Item:{{ diet.milk_diet.diet_name }} </p>
-        <p>Ounces ordered:{{ item.price_per_oz }} </p>
-        <p>Price:{{ item.inventory * item.price_per_oz }} </p>
-        <p>Order cost: {{order_cost}}</p>
-    {% endfor %}
+{% for item,diet in cart_items %}
+    <p>Milk id: {{ item.milk_id }}</p>
+    <p>Item:{{ diet.milk_diet.diet_name }} </p>
+    <p>Ounces ordered:{{ item.price_per_oz }} </p>
+    <p>Price:{{ item.inventory * item.price_per_oz }} </p>
+
+{% endfor %}
+    <p>Order cost: {{order_cost}}</p>
+    <a href ="/checkout">Checkout</a>
 {% endif %}
 
 </div>
-<a href ="/checkout">Checkout</a>
+
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="/static/milk.js"></script>
 <script src="https://js.stripe.com/v3/"></script>
