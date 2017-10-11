@@ -1,9 +1,7 @@
 """"Milk donation website"""
 from jinja2 import StrictUndefined
-
 from flask import Response, Flask, jsonify, json, render_template, redirect, request, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
-
 from model import connect_to_db, db, Order, User, Milk, Order_item, Milk_diet, Diet
 
 app = Flask(__name__, static_url_path='/static')
@@ -103,6 +101,8 @@ def user_homepage(user_id):
 def get_milk():
     """Get information on milk products to display to user"""
     milk_products = db.session.query(Milk, Milk_diet).join(Milk_diet).all()
+    
+    # TODO use map
     milk_output = []
     for (milk, diet) in milk_products:
         milk_output.append({
@@ -125,6 +125,7 @@ def add_to_cart():
     Add a Milk item to cart
     """
     milk = request.args.get('milk', None)
+    # TODO change to map id
     milk = int(milk)
     if milk is None:
         return
@@ -143,7 +144,7 @@ def add_to_cart():
 @app.route("/cart")
 def display_cart():
     """
-    Display items in shopping cart
+    Display items in shopping cart by quering milk_ids that are sent from ajax call.
     cart_items = {[
         diet_name,
         baby_age,
@@ -157,18 +158,19 @@ def display_cart():
     cart = session.get("cart", {})
     cart_items = []
     milk_ids = cart.get("order")
-    print milk_ids
-    if milk_ids is not None:
+    if milk_ids:
         for milk_item in milk_ids:
             milk_query = db.session.query(Milk, Milk_diet).join(Milk_diet).filter_by(milk_id=milk_item).one()
             cart_items.append(milk_query)
         milk_prices = []
+        #calculate total cost of each milk item by multiplying ounces and inventory
         for item in cart_items:
             milk_cost = item.Milk.price_per_oz * item.Milk.inventory
             milk_prices.append(milk_cost)
+        # calculates cost of total user orders
         count = 0
-        for item in milk_prices:
-            count += item
+        for price in milk_prices:
+            count += price
         order_cost = count
         return render_template("cart.html", cart_items=cart_items, order_cost=order_cost)
     else:
@@ -179,8 +181,9 @@ def display_cart():
 def checkout():
     """checkout via stripe"""
     user = session.get("User ID")
-    user_query = User.query.filter_by(user_id=user).one()
-    if user is not None:
+    user_query = User.query.filter_by(user_id=user).first()
+
+    if user:
         fname = user_query.firstname
         lname = user_query.lastname
         address = user_query.address
