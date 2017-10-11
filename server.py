@@ -3,6 +3,7 @@ from jinja2 import StrictUndefined
 from flask import Response, Flask, jsonify, json, render_template, redirect, request, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db, Order, User, Milk, Order_item, Milk_diet, Diet
+from decimal import *
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -172,6 +173,7 @@ def display_cart():
         for price in milk_prices:
             count += price
         order_cost = count
+        session['order_cost'] = order_cost
         return render_template("cart.html", cart_items=cart_items, order_cost=order_cost)
     else:
         return render_template("cart.html", cart_items=cart_items)
@@ -179,16 +181,20 @@ def display_cart():
 
 @app.route("/checkout")
 def checkout():
-    """checkout via stripe"""
+    """User checkout via stripe. Database is queried by User ID and user's shipping information is printed.
+    Total order_cost is calculated by adding shipping, merchandise cost and tax.
+    """
     user = session.get("User ID")
+    order_cost = session.get("order_cost")
+    shipping = 9
+    total_cost = shipping + order_cost
     user_query = User.query.filter_by(user_id=user).first()
-
     if user:
         fname = user_query.firstname
         lname = user_query.lastname
         address = user_query.address
         zipcode = user_query.zipcode
-        return render_template("checkout.html", address=address, zipcode=zipcode, fname=fname, lname=lname)
+        return render_template("checkout.html", address=address, zipcode=zipcode, fname=fname, lname=lname, order_cost=order_cost, shipping=shipping, total_cost=total_cost)
     else:
         flash('Please login or signup')
         return redirect("/login")

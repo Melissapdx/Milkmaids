@@ -4,7 +4,11 @@
   <p>{{fname}} {{lname}}</p>
   <p>{{address}}</p>
   <p> {{zipcode}}</p>
-</form>
+
+<p>Merchandise total: {{(order_cost}}</p>
+<p>Standard Shipping: {{shipping}}</p>
+<br>
+<p>Order total:{{total_cost}}</p>
 
 <form action="/charge" method="post" id="payment-form">
   <div class="form-row">
