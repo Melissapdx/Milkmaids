@@ -1,15 +1,14 @@
 {%extends 'base.html'%}
-{%block content%}
+{% block content%}
+<link rel="stylesheet" href="/static/css/styles.css"/>
 <ul class = "nav">
   <li><a href="/home">Home</a></li>
   <li><a href="/shop">Shop</a></li>
   <li><a href="contact.asp">Donate</a></li>
   <li><a href="about.asp">Contact</a></li>
+  <li id = "checkout"><a href ="/checkout">Checkout</a></li>
 </ul>
-<ul>
-  {% for message in get_flashed_messages() %}
-    <li>{{ message }} {{user.firstname}}</li>
-  {% endfor %}
-</ul>
-<button><a href ="/logout">Logout</button>
+<div class = "homepage">
+    <img src = "static/img/Milkmaids.png">
+</div>
 {%endblock%}

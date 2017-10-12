@@ -1,9 +1,11 @@
 """"Milk donation website"""
+import os
 from jinja2 import StrictUndefined
 from flask import Response, Flask, jsonify, json, render_template, redirect, request, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db, Order, User, Milk, Order_item, Milk_diet, Diet
-from decimal import *
+import stripe
+
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -11,11 +13,24 @@ app.secret_key = "ABC"
 #raises a error for undefined variable in jinja
 app.jinja_env.undefined = StrictUndefined
 
+stripe_keys = {
+    'secret_key': os.environ['SECRET_KEY'],
+    'publishable_key': os.environ['PUBLISHABLE_KEY']
+}
+
+stripe.api_key = stripe_keys['secret_key']
+
+
+@app.route('/stripe_charge')
+def index():
+    print "******************"
+    print stripe_keys['publishable_key']
+    return render_template('index.html', key=stripe_keys['publishable_key'])
 
 @app.route('/')
-def index():
-    """Homepage"""
-    return render_template("index.html")
+def home():
+    """ Displays Homepage"""
+    return render_template("homepage.html")
 
 
 @app.route("/register", methods=["GET"])
@@ -102,7 +117,7 @@ def user_homepage(user_id):
 def get_milk():
     """Get information on milk products to display to user"""
     milk_products = db.session.query(Milk, Milk_diet).join(Milk_diet).all()
-    
+
     # TODO use map
     milk_output = []
     for (milk, diet) in milk_products:
@@ -186,18 +201,39 @@ def checkout():
     """
     user = session.get("User ID")
     order_cost = session.get("order_cost")
-    shipping = 9
-    total_cost = shipping + order_cost
+
     user_query = User.query.filter_by(user_id=user).first()
     if user:
         fname = user_query.firstname
         lname = user_query.lastname
         address = user_query.address
         zipcode = user_query.zipcode
+        shipping = 9
+        total_cost = shipping + order_cost
         return render_template("checkout.html", address=address, zipcode=zipcode, fname=fname, lname=lname, order_cost=order_cost, shipping=shipping, total_cost=total_cost)
     else:
         flash('Please login or signup')
         return redirect("/login")
+
+
+@app.route('/charge', methods=['POST'])
+def charge():
+    # Amount in cents
+    amount = 500
+    print request.form
+    customer = stripe.Customer.create(
+        email='customer@example.com',
+        source=request.form['stripeToken']
+    )
+
+    charge = stripe.Charge.create(
+        customer=customer.id,
+        amount=amount,
+        currency='usd',
+        description='Flask Charge'
+    )
+
+    return render_template('charge.html', amount=amount)
 
 if __name__ == "__main__":
 
