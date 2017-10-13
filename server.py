@@ -1,7 +1,7 @@
 """"Milk donation website"""
 import os
 from jinja2 import StrictUndefined
-from flask import Response, Flask, jsonify, json, render_template, redirect, request, flash, session
+from flask import Flask, jsonify, render_template, redirect, request, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db, Order, User, Milk, Order_item, Milk_diet, Diet
 import stripe
@@ -149,10 +149,7 @@ def add_to_cart():
     else:
         cart = session['cart'] = {}
         cart['order'] = [milk]
-
     session['cart'] = cart
-
-    # html = "Item added to cart!"
     return jsonify({'count': len(cart['order'])})
 
 
@@ -247,11 +244,8 @@ def charge():
 if __name__ == "__main__":
 
     app.debug = True
-    app.jinja_env.auto_reload = app.debug  # make sure templates are not cached
+    app.jinja_env.auto_reload = app.debug
 
     connect_to_db(app)
-
-    # Use the DebugToolbar
-    # DebugToolbarExtension(app)
 
     app.run(port=5000, host='0.0.0.0')

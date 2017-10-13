@@ -8,14 +8,15 @@
   <li><a href="about.asp">Contact</a></li>
 </ul>
 <ul class = "milk-nav">
-  <li><a href="#">Vegetarian</a></li>
-  <li><a href="#">Vegan</a></li>
-  <li><a href="#">Gluten-Free</a></li>
-  <li><a href="#">Omnivore</a></li>
+  <li><a href="#" data-milktype="Veg">Vegetarian</a></li>
+  <li><a href="#" data-milktype="Vegan">Vegan</a></li>
+  <li><a href="#" data-milktype="Glut">Gluten-Free</a></li>
+  <li><a href="#" data-milktype="Omni">Omnivore</a></li>
   <li class = "checkout"><a href ="/cart">Shopping Bag <span>0</span> </a></li>
 </ul>
-<div id= 'cart'></div>
-<div id = "product">
+<div id='cart'></div>
+<div id="product">
+<div id="Veg">
 {% for item in milk_output %}
     {% if item.diet_name == 'Vegetarian' %}
     <img src= "https://www.fillmurray.com/200/300">
@@ -27,6 +28,8 @@
         <p>Date received:{{item.date}}</p>
     {% endif %}
 {% endfor %}
+</div>
+<div id ="Vegan">
 {% for item in milk_output %}
     {% if item.diet_name == 'Vegan' %}
     <img src= "https://www.placecage.com/200/300">
@@ -38,6 +41,8 @@
         <p>Date received: {{item.date}}</p>
     {%endif%}
 {% endfor %}
+</div>
+<div id = "Glut">
 {% for item in milk_output %}
     {% if item.diet_name == 'Gluten-Free' %}
     <img src= "http://www.fillmurray.com/200/300">
@@ -49,6 +54,8 @@
         <p>Date received: {{item.date}}</p>
     {%endif%}
 {% endfor %}
+</div>
+<div id = "Omni">
 {% for item in milk_output %}
     {% if item.diet_name == 'Omnivore' %}
     <img src= "http://www.fillmurray.com/200/300">
@@ -60,7 +67,7 @@
         <p>Date received: {{item.date}}</p>
     {%endif%}
 {% endfor %}
-
+</div>
 </div>
 
 <script src="http://code.jquery.com/jquery.js"></script>
