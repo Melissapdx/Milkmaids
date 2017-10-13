@@ -26,7 +26,7 @@ body{
     color:red;
     margin-left: 40px;
  }
-#checkout{
+.checkout{
     float:right;
     margin-right: 30px;
 }

@@ -23,13 +23,14 @@ stripe.api_key = stripe_keys['secret_key']
 
 @app.route('/stripe_charge')
 def index():
-    print "******************"
-    print stripe_keys['publishable_key']
+
     return render_template('index.html', key=stripe_keys['publishable_key'])
+
 
 @app.route('/')
 def home():
     """ Displays Homepage"""
+
     return render_template("homepage.html")
 
 
@@ -131,20 +132,17 @@ def get_milk():
             "date": milk.date.isoformat(),
             "diet_name": diet.milk_diet.diet_name
         })
-
     return render_template("shop.html", milk_output=milk_output)
 
 
-@app.route('/add_to_cart')
+@app.route("/add_to_cart")
 def add_to_cart():
     """
     Add a Milk item to cart
     """
-    milk = request.args.get('milk', None)
-    # TODO change to map id
+    milk = request.args.get('milk')
     milk = int(milk)
-    if milk is None:
-        return
+
     if 'cart' in session:
         cart = session['cart']
         cart['order'].append(milk)
@@ -153,8 +151,19 @@ def add_to_cart():
         cart['order'] = [milk]
 
     session['cart'] = cart
-    html = "Item added to cart!"
-    return (html)
+
+    # html = "Item added to cart!"
+    return jsonify({'count': len(cart['order'])})
+
+
+@app.route("/update_cart_count")
+def update_cart_count():
+    """update cart count on shop and homepage"""
+
+    cart = session.get("cart", {})
+    count = len(cart['order'])
+
+    return jsonify(count)
 
 
 @app.route("/cart")
