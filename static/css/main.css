@@ -1,0 +1,26 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    padding:0;
+    margin:0;
+}
+
+/*navigation styles*/
+ul{
+    list-style:none;
+}
+a{
+    color:red;
+}
+.nav {
+    background-color: #fff;
+}
+ .navbar-default .navbar-nav>li>a {
+    color:red;
+ }
+
+/* media queries */
+@media (min-width: 768px){
+    .navbar-nav {
+        width:100%;
+    }
+}

@@ -1,13 +1,18 @@
 {%extends 'base.html'%}
 {% block content%}
 <link rel="stylesheet" href="/static/css/styles.css"/>
-<ul class = "nav">
-  <li><a href="/">Home</a></li>
-  <li><a href="/shop">Shop</a></li>
-  <li><a href="contact.asp">Donate</a></li>
-  <li><a href="about.asp">Contact</a></li>
-  <li class = "checkout"><a href ="/checkout">Checkout <span> 0</span></a></li>
-</ul>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav"/>
+      <li><a href="/">Home</a></li>
+      <li><a href="/shop">Shop</a></li>
+      <li><a href="contact.asp">Donate</a></li>
+      <li><a href="about.asp">Contact</a></li>
+      <li class = "checkout"><a href ="/checkout">Checkout <span> 0</span></a></li>
+      <a href ="/login">Login</a>
+    </ul>
+  </div>
+</nav>
 <div class = "homepage">
     <img src = "static/img/Milkmaids.png">
 </div>
