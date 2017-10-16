@@ -180,8 +180,10 @@ def display_cart():
     cart = session.get("cart", {})
     cart_items = []
     milk_ids = cart.get("order")
-    if milk_ids:
-        for milk_item in milk_ids:
+    #change customer order to set so duplicate items are not added to cart
+    milk_set = set(milk_ids)
+    if milk_ids is not None:
+        for milk_item in milk_set:
             milk_query = db.session.query(Milk, Milk_diet).join(Milk_diet).filter_by(milk_id=milk_item).one()
             cart_items.append(milk_query)
         milk_prices = []
