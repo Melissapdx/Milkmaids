@@ -17,6 +17,7 @@ $('.buy_button').on('click', function() {
     addToCart(milk);
 });
 
+//shows or hides items on product page based on what user clicks on
 $('.milk-nav a').on('click',function() {
     var milkDiet = $(this).data('milktype');//storing diet name string from data 
     var selectDiv = $('#' + milkDiet);

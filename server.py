@@ -145,7 +145,8 @@ def add_to_cart():
 
     if 'cart' in session:
         cart = session['cart']
-        cart['order'].append(milk)
+        if milk not in session['cart']:
+            cart['order'].append(milk)
     else:
         cart = session['cart'] = {}
         cart['order'] = [milk]
@@ -158,8 +159,8 @@ def update_cart_count():
     """update cart count on shop and homepage"""
 
     cart = session.get("cart", {})
-    count = len(cart['order'])
-
+    count = len(set(cart['order']))
+    print "COUNT", count
     return jsonify(count)
 
 
@@ -181,8 +182,8 @@ def display_cart():
     cart_items = []
     milk_ids = cart.get("order")
     #change customer order to set so duplicate items are not added to cart
-    milk_set = set(milk_ids)
     if milk_ids is not None:
+        milk_set = set(milk_ids)
         for milk_item in milk_set:
             milk_query = db.session.query(Milk, Milk_diet).join(Milk_diet).filter_by(milk_id=milk_item).one()
             cart_items.append(milk_query)
