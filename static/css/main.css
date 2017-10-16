@@ -11,6 +11,14 @@ ul{
 a{
     color:red;
 }
+.container-fluid{
+    background:white;
+    box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);
+    transition: all .3s ease;
+}
+.container-fluid:hover{
+    box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.2);
+}
 .nav {
     background-color: #fff;
 }
@@ -18,9 +26,13 @@ a{
     color:red;
  }
 
+
 /* media queries */
 @media (min-width: 768px){
     .navbar-nav {
         width:100%;
     }
+
+
 }
+
