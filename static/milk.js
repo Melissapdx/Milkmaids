@@ -1,10 +1,13 @@
 
-
 //displays message letting user know item was added to cart and increments count with ajax
 function addToCart(milk) {
     $.get('/add_to_cart', {milk: milk}, function(data) {
-        $('#cart').html(" Item added to cart!");
-         $('.checkout a span').html(data.count);
+        if(data.error !== undefined){
+            $('#cart').html(data.error);
+        } else {
+            $('#cart').html(" Item added to cart!");
+            $('.checkout a span').html(data.count);
+        }
     });
 }
 //reloads customer cart count on page
@@ -19,9 +22,6 @@ $('.buy_button').on('click', function() {
     addToCart(milk);
     buy = $('.buy_button');
 });
-
-
-
 //shows or hides items on product page based on what user clicks on
 $('.milk-nav a').on('click',function() {
     var milkDiet = $(this).data('milktype');//storing diet name string from data 

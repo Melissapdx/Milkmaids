@@ -7,7 +7,7 @@ from model import connect_to_db, db, Order, User, Milk, Order_item, Milk_diet, D
 import stripe
 
 
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__)
 
 app.secret_key = "ABC"
 #raises a error for undefined variable in jinja
@@ -92,7 +92,7 @@ def login_handler():
     else:
         flash("Email doesn't exist. Please sign up!")
         return redirect("/login")
-    return redirect("/userhome%s" % user.user_id)
+    return redirect("/userhome/%s" % user.user_id)
 
 
 @app.route("/logout")
@@ -145,7 +145,9 @@ def add_to_cart():
 
     if 'cart' in session:
         cart = session['cart']
-        if milk not in session['cart']:
+        if milk in cart['order']:
+            return jsonify({'error': "Item already in cart"})
+        else:
             cart['order'].append(milk)
     else:
         cart = session['cart'] = {}
@@ -159,8 +161,11 @@ def update_cart_count():
     """update cart count on shop and homepage"""
 
     cart = session.get("cart", {})
-    count = len(set(cart['order']))
-    return jsonify(count)
+    if 'order' in cart:
+        count = len(set(cart['order']))
+        return jsonify(count)
+    else:
+        return jsonify({})
 
 
 @app.route("/cart")

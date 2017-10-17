@@ -11,9 +11,19 @@
   </div>
 </nav>
 </div>
+<div class="login_form">
+<form action="/login" method="post">
+    <h2>Sign In</h2>
+    <label for="email_2" class="email_2">Email</label>
+    <input type="text" id="email_2" name="email_2" required>
+    <label for="password_2" class="password_2">Password</label>
+    <input type="password" id="password_2" name="password_2" required>
+    <button type="submit">Sign In</button>
+</form>
+</div>
 <div class="register_form">
 <form action="/register" method="post">
-    <h1>Create an Account</h1>
+    <h2>Create an Account</h2>
     <label for="firstname" class="firstname">First Name</label>
     <input type="text" id="firstname" name="firstname" placeholder="Required">
     <label for="lastname" class="lastname">Last Name</label>
@@ -28,22 +38,13 @@
     <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
     <button type="submit">Create Account</button>
 </form>
-</div>
-<div class="login_form">
-<form action="/login" method="post">
-    <h2>Sign In</h2>
-    <label for="email_2" class="email_2">Email</label>
-    <input type="text" id="email_2" name="email_2" required>
-    <label for="password_2" class="password_2">Password</label>
-    <input type="password" id="password_2" name="password_2" required>
-    <button type="submit">Sign In</button>
-</form>
 <div id="message">
   <h3>Password must contain the following:</h3>
   <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
   <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
   <p id="number" class="invalid">A <b>number</b></p>
   <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+</div>
 </div>
 
 <ul>

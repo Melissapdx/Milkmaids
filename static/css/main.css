@@ -1,9 +1,13 @@
+/*main styles*/
 body{
     font-family: 'Open Sans', sans-serif;
     padding:0;
     margin:0;
 }
-
+h2{
+    text-align: center;
+    font-size: 1.5em;
+}
 /*navigation styles*/
 ul{
     list-style:none;
@@ -26,22 +30,43 @@ a{
     color:red;
  }
  /* form styles */
-/* The message box is shown when the user clicks on the password field */
+label{
+    display: block;
+    max-width: 75%;
+    margin: 0 auto;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="password_2"]
+{
+    display:block;
+    margin:0 auto;
+    padding:5px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    min-width:75%;
+    border-color: lightgrey;
+}
+button{
+    display:block;
+    margin: 0 auto;
+}
 .login_form{
     width:50%;
     float:left;
 }
 .register_form{
     width:50%;
-    float:right;
+    float:left;
+    border-left: 1px solid lightgrey;
 }
 #message {
     display:none;
     color: #000;
     position: relative;
-     padding: 20px;
+    padding: 20px;
     margin-top: 10px;
-    float:right;
 
 }
 
