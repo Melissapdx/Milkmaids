@@ -10,12 +10,10 @@
     </ul>
   </div>
 </nav>
-<div class="container">
-<div class="row">
-  <div class="col-6">
+</div>
+<div class="register_form">
 <form action="/register" method="post">
     <h1>Create an Account</h1>
-    <legend>Contact Information</legend>
     <label for="firstname" class="firstname">First Name</label>
     <input type="text" id="firstname" name="firstname" placeholder="Required">
     <label for="lastname" class="lastname">Last Name</label>
@@ -31,23 +29,7 @@
     <button type="submit">Create Account</button>
 </form>
 </div>
-</div>
-</div>
-<div id="message">
-  <h3>Password must contain the following:</h3>
-  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-  <p id="number" class="invalid">A <b>number</b></p>
-  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-</div>
-<ul>
-  {% for message in get_flashed_messages() %}
-    <li>{{ message }}</li>
-  {% endfor %}
-</ul>
-<div class ="container">
-<div class="row">
-<div class="col-6">
+<div class="login_form">
 <form action="/login" method="post">
     <h2>Sign In</h2>
     <label for="email_2" class="email_2">Email</label>
@@ -56,9 +38,21 @@
     <input type="password" id="password_2" name="password_2" required>
     <button type="submit">Sign In</button>
 </form>
+<div id="message">
+  <h3>Password must contain the following:</h3>
+  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+  <p id="number" class="invalid">A <b>number</b></p>
+  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
 </div>
-</div>
-</div>
+
+<ul>
+  {% for message in get_flashed_messages() %}
+    <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+
+
 
 <script src="static/verification.js"></script>
 <script src="https://js.stripe.com/v3/"></script>
