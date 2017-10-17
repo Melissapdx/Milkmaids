@@ -92,7 +92,7 @@ def login_handler():
     else:
         flash("Email doesn't exist. Please sign up!")
         return redirect("/login")
-    return redirect("/userhome/%s" % user.user_id)
+    return redirect("/userhome%s" % user.user_id)
 
 
 @app.route("/logout")
@@ -151,7 +151,7 @@ def add_to_cart():
         cart = session['cart'] = {}
         cart['order'] = [milk]
     session['cart'] = cart
-    return jsonify({'count': len(cart['order'])})
+    return jsonify({'count': len(set(cart['order']))})
 
 
 @app.route("/update_cart_count")
@@ -160,7 +160,6 @@ def update_cart_count():
 
     cart = session.get("cart", {})
     count = len(set(cart['order']))
-    print "COUNT", count
     return jsonify(count)
 
 

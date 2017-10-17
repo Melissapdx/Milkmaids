@@ -1,12 +1,18 @@
 {%extends 'base.html'%}
 
 {%block content%}
-<ul class = "nav">
-  <li><a href="/">Home</a></li>
-  <li><a href="/shop">Shop</a></li>
-  <li><a href="contact.asp">Donate</a></li>
-  <li><a href="about.asp">Contact</a></li>
-</ul>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav"/>
+      <li><a href="/">Home</a></li>
+      <li><a href="/shop">Shop</a></li>
+      <li class="checkout"><a href ="/checkout">Checkout: <span> 0 </span> items</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+<div class="row">
+  <div class="col-6">
 <form action="/register" method="post">
     <h1>Create an Account</h1>
     <legend>Contact Information</legend>
@@ -21,14 +27,27 @@
     <label for="zipcode" class="zipcode">Zipcode</label>
     <input type="text" id="zipcode" name="zipcode"placeholder="Required">
     <label for="password" class="password">Password</label>
-    <input type="password" id="password" name="password"placeholder="Required">
+    <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
     <button type="submit">Create Account</button>
 </form>
+</div>
+</div>
+</div>
+<div id="message">
+  <h3>Password must contain the following:</h3>
+  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+  <p id="number" class="invalid">A <b>number</b></p>
+  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+</div>
 <ul>
   {% for message in get_flashed_messages() %}
     <li>{{ message }}</li>
   {% endfor %}
 </ul>
+<div class ="container">
+<div class="row">
+<div class="col-6">
 <form action="/login" method="post">
     <h2>Sign In</h2>
     <label for="email_2" class="email_2">Email</label>
@@ -37,7 +56,10 @@
     <input type="password" id="password_2" name="password_2" required>
     <button type="submit">Sign In</button>
 </form>
+</div>
+</div>
+</div>
 
-<!-- TODO install bower -->
+<script src="static/verification.js"></script>
 <script src="https://js.stripe.com/v3/"></script>
 {%endblock%}
