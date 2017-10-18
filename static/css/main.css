@@ -51,7 +51,13 @@ input[type="password_2"]
 button{
     display:block;
     margin: 0 auto;
+    width:75%;
+    max-width: 100%;
+    padding:10px 25px;
+    font-size: 1.2em;
+    color:black;
 }
+
 .login_form{
     width:50%;
     float:left;
