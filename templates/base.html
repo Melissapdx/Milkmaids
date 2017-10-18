@@ -9,12 +9,7 @@
     <title>Milkmaids</title>
 </head>
 <body>
-    {% if 'User ID' in session %}
-         <div class ="log"><a href = "/logout">Logout</a></div>
-    {% endif %}
-    {% if 'User ID' not in session %}
-        <div class ="log"> <a href = "/login">Login</a></div>
-    {% endif %}
+ 
     {%block content%}
 
     {%endblock%}

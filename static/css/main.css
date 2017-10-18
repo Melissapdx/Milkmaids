@@ -29,6 +29,9 @@ a{
  .navbar-default .navbar-nav>li>a {
     color:red;
  }
+.log a{
+    float:right;
+}
  /* form styles */
 label{
     display: block;
@@ -48,7 +51,7 @@ input[type="password_2"]
     min-width:75%;
     border-color: lightgrey;
 }
-button{
+.login_page{
     display:block;
     margin: 0 auto;
     width:75%;
