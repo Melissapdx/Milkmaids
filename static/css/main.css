@@ -7,6 +7,7 @@ body{
 h2{
     text-align: center;
     font-size: 1.5em;
+    color:red;
 }
 /*navigation styles*/
 ul{
@@ -31,6 +32,15 @@ a{
  }
 .log a{
     float:right;
+}
+/*product page*/
+.product{
+    width:290px;
+}
+.buy_button{
+    position:absolute;
+    bottom:161px;
+    right:50px;
 }
  /* form styles */
 label{
@@ -106,7 +116,6 @@ input[type="password_2"]
     .navbar-nav {
         width:100%;
     }
-
 
 }
 

@@ -117,13 +117,21 @@ class Diet(db.Model):
 
         return "<Diet diet_id=%s,diet_name=%s>" % (self.diet_id, self.diet_name)
 
-#Helper functions
 
-def connect_to_db(app):
+#Helper functions
+def example_data():
+    """Example data for tests.py"""
+    user = User(email="person@gmail.com",
+                password="admin")
+    db.session.add(user)
+    db.session.commit()
+
+
+def connect_to_db(app,db_uri="postgresql:///milkmaids"):
     """"Connect the database to the flask app"""
 
     #Configure to PstgresSql database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///milkmaids'
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)

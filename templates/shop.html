@@ -24,7 +24,7 @@
     {% for item in milk_output %}
         {% if item.diet_name == 'Vegetarian' %}
         <div class="col-md-4">
-            <img src="static/img/veggies.jpg">
+            <img class="product" src="static/img/veggies.jpg">
                 <button type="submit" class="buy_button" data-tooltip="{{item.milk_id}}">Buy</button>
                 <p>Diet:{{item.diet_name}}</p>
                 <p>Baby's Age:{{item.baby_age}} Months</p>
@@ -38,7 +38,7 @@
     {% for item in milk_output %}
         {% if item.diet_name == 'Vegan' %}
         <div class="col-md-4">
-            <img src="https://www.placecage.com/200/300">
+            <img class="product"src="static/img/vegan.jpg">
                 <button type="submit" class="buy_button" data-tooltip="{{item.milk_id}}">Buy</button>
                 <p>Diet: {{item.diet_name}}</p>
                 <p>Baby's Age:{{item.baby_age}}</p>
@@ -52,7 +52,7 @@
     {% for item in milk_output %}
         {% if item.diet_name == 'Gluten-Free' %}
         <div class="col-md-4">
-            <img src= "static/img/milk_fruit.jpg">
+            <img class="product"src= "static/img/milk_fruit.jpg">
                 <button type="submit" class="buy_button" data-tooltip="{{item.milk_id}}">Buy</button>
                 <p>Diet: {{item.diet_name}}</p>
                 <p>Baby's Age: {{item.baby_age}}</p>
@@ -66,7 +66,7 @@
     {% for item in milk_output %}
         {% if item.diet_name == 'Omnivore' %}
         <div class="col-md-4">
-            <img src= "static/img/milkO.jpg">
+            <img class="product" src= "static/img/milkO.jpg">
                 <button type="submit" class="buy_button" data-tooltip="{{item.milk_id}}">Buy</button>
                 <p> Diet: {{item.diet_name}}</p>
                 <p> Baby's Age: {{item.baby_age}}</p>

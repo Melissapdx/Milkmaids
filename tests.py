@@ -1,11 +1,11 @@
 from unittest import TestCase
 from server import app
 from flask import session
-from model import db, example_dat, connect_to_db
+from model import db, example_data, connect_to_db
 
 
 class Milktests(TestCase):
-    """Tests for milkmaid site"""
+    """Tests routes for Milkmaids site"""
 
     def setUp(self):
         """Basic test setup"""
@@ -16,6 +16,7 @@ class Milktests(TestCase):
         """Test homepage"""
         result = self.client.get('/')
         self.assertIn("<title>Milkmaids</title>", result.data)
+        self.assertIn("<h2>About</h2>", result.data)
 
     def test_login_elements(self):
         """ Test Login page elements"""
@@ -23,19 +24,18 @@ class Milktests(TestCase):
         self.assertIn("<h2>Sign In</h2>", result.data)
         self.assertIn("<h2>Create an Account</h2>", result.data)
 
-    def test_shop(self):
-        """Test shop page"""
-        self.client.post("/shop", follow_redirects=True)
-
     def test_cart(self):
-        """Test shop page"""
-        self.client.post("/cart", follow_redirects=True)
+        """Test cart page"""
+        result = self.client.get("/cart")
+        self.assertEqual(result.status_code, 200)
 
 
 class FlaskTestsDatabase(TestCase):
 
     def setUp(self):
         """Basic test setup"""
+        self.client = app.test_client()
+        app.config['TESTING'] = True
         # Connect to test database
         connect_to_db(app, "postgresql:///testdb")
         # Create tables and add sample data
@@ -51,10 +51,15 @@ class FlaskTestsDatabase(TestCase):
     def test_user_login(self):
         """Test user login"""
         result = self.client.post("/login",
-            data={"email_2": "SusanSnow@gmail.com",
-            "password_2": "1234"},
-            follow_redirects=True)
+                    data={"email_2": "person@gmail.com",
+                    " password_2": "admin"},
+                    follow_redirects=True)
+        self.assertEqual(result.status_code, 200)
 
+    def test_shop(self):
+        """Test shop page"""
+        result = self.client.get("/shop")
+        self.assertEqual(result.status_code, 200)
 
 if __name__ == "__main__":
     import unittest
