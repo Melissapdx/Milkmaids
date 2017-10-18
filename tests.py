@@ -61,6 +61,16 @@ class FlaskTestsDatabase(TestCase):
         result = self.client.get("/shop")
         self.assertEqual(result.status_code, 200)
 
+    def logout(self):
+        """Test logout page"""
+        result = self.client.get("/logout")
+        self.assertEqual(result.status_code, 200)
+
+    def register(self):
+        """Test registration page"""
+        result = self.client.get("/register")
+        self.assertEqual(result.status_code, 200)
+
 if __name__ == "__main__":
     import unittest
     unittest.main()

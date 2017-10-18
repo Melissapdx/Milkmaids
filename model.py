@@ -127,7 +127,7 @@ def example_data():
     db.session.commit()
 
 
-def connect_to_db(app,db_uri="postgresql:///milkmaids"):
+def connect_to_db(app, db_uri="postgresql:///milkmaids"):
     """"Connect the database to the flask app"""
 
     #Configure to PstgresSql database
