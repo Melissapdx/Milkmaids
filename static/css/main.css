@@ -8,12 +8,32 @@ h2{
     text-align: center;
     font-size: 1.5em;
     color:red;
+    margin:0;
+}
+.homepage{
+    background:url("/static/img/milkbottle.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    min-height: 100vh;
+}
+
+.logo{
+    display: block;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+.about,.container{
+    padding-top:20px;
 }
 /*navigation styles*/
 ul{
     list-style:none;
+    text-align: center;
 }
-a{
+a,h3{
     color:red;
 }
 .container-fluid{
@@ -27,21 +47,37 @@ a{
 .nav {
     background-color: #fff;
 }
+
  .navbar-default .navbar-nav>li>a {
     color:red;
  }
-.log a{
-    float:right;
-}
+.milkmaids{
+    position: absolute;
+    width:100%;
+    }
 /*product page*/
 .product{
     width:290px;
 }
 .buy_button{
-    position:absolute;
-    bottom:161px;
-    right:50px;
+    font-size: 1em;
+    background: #E76C67;
+    border: 1px solid #E76C67;
+    padding: 10px 30px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 10px;
+    opacity: 0.9;
 }
+.buy_button:hover,
+.buy_button:focus {
+background:#fff;
+border: 1px solid #E76C67;
+color: #E76C67;
+opacity: 0.9;
+}
+
  /* form styles */
 label{
     display: block;
@@ -116,6 +152,19 @@ input[type="password_2"]
     .navbar-nav {
         width:100%;
     }
+    .home{
+        border: 1px solid #efefef;
+        padding: 30px 0 30px;
+    }
+    .home h3, .home p{
+        margin: 0;
+    }
+    .buy_button{
+    position:absolute;
+    bottom:140px;
+    right:50px;
+    }
+
 
 }
 

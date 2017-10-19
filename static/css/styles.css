@@ -1,24 +1,4 @@
 /* general page styles */
-.homepage{
-    background:url("/static/img/milkbottle.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    min-height: 100vh;
-}
 
- img{
-    display: block;
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translateY(-50%) translateX(-50%);
 
  }
-/* media queries */
-@media (min-width: 768px){
- .navbar{
-    position: absolute;
-    width:100%;
-    }
-}

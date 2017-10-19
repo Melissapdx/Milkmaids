@@ -1,8 +1,6 @@
 {%extends 'base.html'%}
 {% block content%}
-<link rel="stylesheet" href="/static/css/main.css"/>
-<link rel="stylesheet" href="/static/css/styles.css"/>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default milkmaids">
   <div class="container-fluid">
     <ul class="nav navbar-nav"/>
       <li><a href="/">Home</a></li>
@@ -10,20 +8,28 @@
       <li><a href="contact.asp">Donate</a></li>
       <li><a href="about.asp">Contact</a></li>
       <li class="checkout"><a href ="/checkout">Checkout: <span> 0 </span> items</a></li>
-         {% if 'User ID' in session %}
-         <div class ="log"><a href = "/logout">Logout</a></div>
+    {% if 'User ID' in session %}
+         <li class ="log"><a href = "/logout">Logout</a></li>
     {% endif %}
     {% if 'User ID' not in session %}
-        <div class ="log"> <a href = "/login">Login</a></div>
+        <li class ="log"> <a href = "/login">Login</a></li>
     {% endif %}
     </ul>
   </div>
 </nav>
 <div class="homepage">
-    <img src="static/img/Milkmaids.png">
+    <img class="logo" src="static/img/Milkmaids.png">
 </div>
-<div class="about">
-  <h2>About</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 home">
+      <h3>Real Moms<br>Real Milk</h3>
+    </div>
+    <div class="col-md-8 home">
+        <h2>About</h2>
+        <p>Our paid milk donation program allows moms earn income to help support their family,save up for that college fund or their next vacation. We test and buy the best milk so you can get the best nutrional value.</p>
+    </div>
+  </div>
 </div>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="/static/milk.js"></script>
