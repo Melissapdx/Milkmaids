@@ -61,12 +61,12 @@ class FlaskTestsDatabase(TestCase):
         result = self.client.get("/shop")
         self.assertEqual(result.status_code, 200)
 
-    def logout(self):
+    def test_ogout(self):
         """Test logout page"""
         result = self.client.get("/logout")
         self.assertEqual(result.status_code, 200)
 
-    def register(self):
+    def test_register(self):
         """Test registration page"""
         result = self.client.get("/register")
         self.assertEqual(result.status_code, 200)

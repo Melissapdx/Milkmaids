@@ -10,6 +10,11 @@
     </ul>
   </div>
 </nav>
+<ul class="user_message">
+  {% for message in get_flashed_messages() %}
+    <li>{{ message }}</li>
+  {% endfor %}
+</ul>
 </div>
 <div class="login_form">
 <form action="/login" method="post">
@@ -47,14 +52,10 @@
 </div>
 </div>
 
-<ul>
-  {% for message in get_flashed_messages() %}
-    <li>{{ message }}</li>
-  {% endfor %}
-</ul>
 
 
 
+<script src="/static/milk.js"></script>
 <script src="static/verification.js"></script>
 <script src="https://js.stripe.com/v3/"></script>
 {%endblock%}

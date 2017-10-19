@@ -232,7 +232,8 @@ def checkout():
 @app.route('/charge', methods=['POST'])
 def charge():
     # Amount in cents
-    amount = 500
+    order_cost = session.get("order_cost")
+    amount = order_cost
     print request.form
     customer = stripe.Customer.create(
         email='customer@example.com',

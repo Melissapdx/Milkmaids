@@ -28,6 +28,10 @@ h2{
 .about,.container{
     padding-top:20px;
 }
+.user_message{
+
+    font-size: 1.2em;
+}
 /*navigation styles*/
 ul{
     list-style:none;
@@ -59,6 +63,10 @@ a,h3{
 .product{
     width:290px;
 }
+#cart{
+ text-align: center;
+ font-size: 1.2em;
+}
 .buy_button{
     font-size: 1em;
     background: #E76C67;
@@ -70,8 +78,7 @@ a,h3{
     border-radius: 10px;
     opacity: 0.9;
 }
-.buy_button:hover,
-.buy_button:focus {
+.buy_button:hover{
 background:#fff;
 border: 1px solid #E76C67;
 color: #E76C67;
@@ -165,6 +172,10 @@ input[type="password_2"]
     right:50px;
     }
 
-
+}
+@media (min-width: 1200px){
+    .buy_button{
+        right:100px;
+    }
 }
 
