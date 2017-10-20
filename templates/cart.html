@@ -2,21 +2,32 @@
 {% block content%}
 <nav class="navbar navbar-default milkmaids">
   <div class="container-fluid">
-    <ul class="nav navbar-nav"/>
-      <li><a href="/">Home</a></li>
-      <li><a href="/shop">Shop</a></li>
-      <li><a href="contact.asp">Donate</a></li>
-      <li><a href="about.asp">Contact</a></li>
-      <li class="checkout"><a href ="/checkout">Checkout: <span> 0 </span> items</a></li>
-    {% if 'User ID' in session %}
-         <li class ="log"><a href = "/logout">Logout</a></li>
-    {% endif %}
-    {% if 'User ID' not in session %}
-        <li class ="log"> <a href = "/login">Login</a></li>
-    {% endif %}
-    </ul>
+       <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+     <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav"/>
+              <li><a href="/">Home</a></li>
+              <li><a href="/shop">Shop</a></li>
+              <li><a href="contact.asp">Donate</a></li>
+              <li><a href="about.asp">Contact</a></li>
+              <li class="checkout"><a href ="/checkout">Checkout:<span>0</span> items</a></li>
+            {% if 'User ID' in session %}
+                 <li class ="log"><a href = "/logout">Logout</a></li>
+            {% endif %}
+            {% if 'User ID' not in session %}
+                <li class ="log"> <a href = "/login">Login</a></li>
+            {% endif %}
+        </ul>
+      </div>
+     </nav>
   </div>
-</nav>
 <div class= "order_items">
 {% if cart_items == [] %}
     <p>Your shopping bag is empty but you can change that!</p>

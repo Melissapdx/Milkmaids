@@ -1,22 +1,33 @@
 {%extends 'base.html'%}
 
 {% block content%}
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default milkmaids">
   <div class="container-fluid">
-    <ul class="nav navbar-nav"/>
-      <li><a href="/">Home</a></li>
-      <li><a href="/shop">Shop</a></li>
-      <li class = "checkout"><a href ="/checkout">Checkout <span> 0</span></a></li>
-      {% if 'User ID' in session %}
-      <li class ="log"><a href = "/logout">Logout</a></li>
-      {% endif %}
-      {% if 'User ID' not in session %}
-      <li class ="log"> <a href = "/login">Login</a></li>
-      {% endif %}
-    </ul>
+       <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+     <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav"/>
+              <li><a href="/">Home</a></li>
+              <li><a href="/shop">Shop</a></li>
+              <li class="checkout"><a href ="/checkout">Checkout:<span>0</span> items</a></li>
+            {% if 'User ID' in session %}
+                 <li class ="log"><a href = "/logout">Logout</a></li>
+            {% endif %}
+            {% if 'User ID' not in session %}
+                <li class ="log"> <a href = "/login">Login</a></li>
+            {% endif %}
+        </ul>
+      </div>
+     </nav>
   </div>
-</nav>
-<ul class = "milk-nav">
+<ul class="milk-nav">
   <li><a href="#" data-milktype="Veg">Vegetarian</a></li>
   <li><a href="#" data-milktype="Vegan">Vegan</a></li>
   <li><a href="#" data-milktype="Glut">Gluten-Free</a></li>
@@ -24,17 +35,19 @@
   <li class = "checkout"><a href ="/cart">Shopping Bag <span>0</span> </a></li>
 </ul>
 <div id="cart"></div>
-<div class="container">
+<div class="container gallery">
     <div class="row" id="Veg">
     {% for item in milk_output %}
         {% if item.diet_name == 'Vegetarian' %}
         <div class="col-md-4">
             <img class="product" src="static/img/veggies.jpg">
                 <button type="submit" class="buy_button" data-tooltip="{{item.milk_id}}">Buy</button>
+            <div class="words">
                 <p>Diet:{{item.diet_name}}</p>
                 <p>Baby's Age:{{item.baby_age}} Months</p>
                 <p>Price Per OZ: ${{item.price_per_oz}} </p>
                 <p>Ounces available:{{item.inventory}}</p>
+            </div>
         </div>
         {% endif %}
     {% endfor %}
@@ -45,10 +58,12 @@
         <div class="col-md-4">
             <img class="product"src="static/img/vegan.jpg">
                 <button type="submit" class="buy_button" data-tooltip="{{item.milk_id}}">Buy</button>
+            <div class="words">
                 <p>Diet: {{item.diet_name}}</p>
                 <p>Baby's Age:{{item.baby_age}}</p>
                 <p>Price Per OZ: ${{item.price_per_oz}} </p>
                 <p>Ounces available: {{item.inventory}}</p>
+            </div>
         </div>
         {%endif%}
     {% endfor %}
@@ -59,10 +74,12 @@
         <div class="col-md-4">
             <img class="product"src= "static/img/milk_fruit.jpg">
                 <button type="submit" class="buy_button" data-tooltip="{{item.milk_id}}">Buy</button>
+            <div class="words">
                 <p>Diet: {{item.diet_name}}</p>
                 <p>Baby's Age: {{item.baby_age}}</p>
                 <p>Price Per OZ: ${{item.price_per_oz}} </p>
                 <p>Ounces available: {{item.inventory}}</p>
+            </div>
         </div>
         {%endif%}
     {% endfor %}
@@ -73,10 +90,12 @@
         <div class="col-md-4">
             <img class="product" src= "static/img/milkO.jpg">
                 <button type="submit" class="buy_button" data-tooltip="{{item.milk_id}}">Buy</button>
+            <div class="words">
                 <p> Diet: {{item.diet_name}}</p>
                 <p> Baby's Age: {{item.baby_age}}</p>
                 <p>Price Per OZ: ${{item.price_per_oz}} </p>
                 <p>Ounces available: {{item.inventory}}</p>
+            </div>
         </div>
         {%endif%}
     {% endfor %}
