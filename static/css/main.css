@@ -4,7 +4,7 @@ body{
     padding:0;
     margin:0;
 }
-h2{
+h2,h3{
     text-align: center;
     font-size: 1.5em;
     color:red;
@@ -62,7 +62,6 @@ a,h3{
 
 /*product page*/
 
-
 .product{
     width:290px;
 }
@@ -93,8 +92,8 @@ padding-top:70px;
 }
 .words{
     border:1px solid black;
-    margin:10px 0px;
-    padding:10px 0px;
+    margin:10px 0;
+    padding:10px 0;
 }
 
  /* form styles */
@@ -103,6 +102,7 @@ label{
     max-width: 75%;
     margin: 0 auto;
 }
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -125,15 +125,13 @@ input[type="password_2"]
     font-size: 1.2em;
     color:black;
 }
-
-.login_form{
-    width:50%;
-    float:left;
+.login_form {
+    margin-bottom: 30px;
+    padding: 40px 0 40px 0;
+    border-bottom:1px solid lightgrey;
 }
 .register_form{
-    width:50%;
-    float:left;
-    border-left: 1px solid lightgrey;
+    padding-bottom: 40px;
 }
 #message {
     display:none;
@@ -145,6 +143,7 @@ input[type="password_2"]
 }
 
 #message p {
+    text-align:center;
     font-size: 15px;
     padding: 10px 35px;
 }
@@ -170,27 +169,37 @@ input[type="password_2"]
 }
 /* media queries */
 @media (min-width: 768px){
-    .navbar-nav {
-        width:100%;
-    }
-    .home{
-        border: 1px solid #efefef;
-        padding: 30px 0 30px;
-    }
-    .home h3, .home p{
-        margin: 0;
-    }
-    .buy_button{
-    position:absolute;
-    bottom:175px;
-    right:50px;
-    }
-
-
+.navbar-nav {
+    width:100%;
 }
+.home{
+    border: 1px solid #efefef;
+    padding: 30px 0 30px;
+}
+.home h3, .home p{
+    margin: 0;
+}
+.buy_button{
+position:absolute;
+bottom:175px;
+right:50px;
+}
+/*form styles */
+
+.login_form, .register_form{
+    width:50%;
+    float:left;
+    padding: 10px 0;
+    border-bottom:none;
+}
+.register_form{
+    border-left: 1px solid lightgrey;
+}
+
 @media (min-width: 1200px){
     .buy_button{
         right:100px;
     }
+
 }
 
