@@ -39,7 +39,7 @@
     <div class="row" id="Veg">
     {% for item in milk_output %}
         {% if item.diet_name == 'Vegetarian' %}
-        <div class="col-md-4">
+        <div class="col-sm-6 col-md-4">
             <img class="product" src="static/img/veggies.jpg">
                 <button type="submit" class="buy_button" data-tooltip="{{item.milk_id}}">Buy</button>
             <div class="words">
@@ -55,7 +55,7 @@
     <div class="row" id="Vegan">
     {% for item in milk_output %}
         {% if item.diet_name == 'Vegan' %}
-        <div class="col-md-4">
+        <div class=" col-sm-6 col-md-4">
             <img class="product"src="static/img/vegan.jpg">
                 <button type="submit" class="buy_button" data-tooltip="{{item.milk_id}}">Buy</button>
             <div class="words">
@@ -71,7 +71,7 @@
     <div class="row" id="Glut">
     {% for item in milk_output %}
         {% if item.diet_name == 'Gluten-Free' %}
-        <div class="col-md-4">
+        <div class="col-sm-6 col-md-4">
             <img class="product"src= "static/img/milk_fruit.jpg">
                 <button type="submit" class="buy_button" data-tooltip="{{item.milk_id}}">Buy</button>
             <div class="words">
@@ -87,7 +87,7 @@
     <div class="row" id="Omni">
     {% for item in milk_output %}
         {% if item.diet_name == 'Omnivore' %}
-        <div class="col-md-4">
+        <div class="col-sm-6 col-md-4">
             <img class="product" src= "static/img/milkO.jpg">
                 <button type="submit" class="buy_button" data-tooltip="{{item.milk_id}}">Buy</button>
             <div class="words">
