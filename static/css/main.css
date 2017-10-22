@@ -23,7 +23,13 @@ h2,h3{
     background-repeat:no-repeat;
     background-position:0px 14px;
 }
-
+.nav-logo{
+    margin-top: 5px;
+}
+.nav-logo img{
+    height: 60%;
+    width: 65%; 
+}
 .logo{
     display: block;
     position: absolute;
