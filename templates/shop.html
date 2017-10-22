@@ -16,13 +16,13 @@
         <ul class="nav navbar-nav"/>
               <li><a href="/">Home</a></li>
               <li><a href="/shop">Shop</a></li>
-              <li class="checkout"><a href ="/checkout">Checkout:<span>0</span> items</a></li>
             {% if 'User ID' in session %}
                  <li class ="log"><a href = "/logout">Logout</a></li>
             {% endif %}
             {% if 'User ID' not in session %}
                 <li class ="log"> <a href = "/login">Login</a></li>
             {% endif %}
+            <li class="checkout"><a href ="/checkout"><span>0</span></a></li>
         </ul>
       </div>
      </nav>
@@ -32,7 +32,6 @@
   <li><a href="#" data-milktype="Vegan">Vegan</a></li>
   <li><a href="#" data-milktype="Glut">Gluten-Free</a></li>
   <li><a href="#" data-milktype="Omni">Omnivore</a></li>
-  <li class = "checkout"><a href ="/cart">Shopping Bag <span>0</span> </a></li>
 </ul>
 <div id="cart"></div>
 <div class="container gallery">

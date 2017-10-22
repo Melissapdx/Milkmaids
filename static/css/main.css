@@ -7,15 +7,21 @@ body{
 h2,h3{
     text-align: center;
     font-size: 1.5em;
-    color:red;
+    color:#cc0000;
     margin:0;
 }
 .homepage{
-    background:url("/static/img/milkbottle.jpg");
+    background:url("/static/img/vintagemilk.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     min-height: 100vh;
+}
+.checkout a{
+    background:url("/static/img/cart.png");
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:0px 14px;
 }
 
 .logo{
@@ -37,9 +43,7 @@ ul{
     list-style:none;
     text-align: center;
 }
-a,h3{
-    color:red;
-}
+
 .container-fluid{
     background:white;
     box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);
@@ -52,8 +56,8 @@ a,h3{
     background-color: #fff;
 }
 
- .navbar-default .navbar-nav>li>a {
-    color:red;
+ .navbar-default .navbar-nav>li>a, a{
+    color:#cc0000;
  }
 .milkmaids{
     position: absolute;
@@ -64,6 +68,8 @@ a,h3{
 
 .product{
     width:290px;
+    display:block;
+    margin:0 auto;
 }
 
 #cart{
@@ -92,10 +98,11 @@ padding-top:70px;
 }
 .words{
     border:1px solid black;
-    margin:10px 0;
     padding:10px 0;
 }
-
+.words p{
+    color:#434751;
+}
  /* form styles */
 label{
     display: block;
@@ -157,7 +164,7 @@ input[type="password_2"]
 
 }
 .invalid {
-    color: red;
+    color: #cc0000;
 }
 
 .invalid:before {
@@ -169,9 +176,9 @@ input[type="password_2"]
 }
 /* media queries */
 @media (min-width: 768px){
-.navbar-nav {
+/*.navbar-nav {
     width:100%;
-}
+}*/
 .home{
     border: 1px solid #efefef;
     padding: 30px 0 30px;
@@ -182,7 +189,7 @@ input[type="password_2"]
 .buy_button{
 position:absolute;
 bottom:175px;
-right:50px;
+right:90px;
 }
 /*form styles */
 
@@ -195,7 +202,12 @@ right:50px;
 .register_form{
     border-left: 1px solid lightgrey;
 }
+@media (min-width: 1000px){
+    .buy_button{
+        right:45px;
+    }
 
+}
 @media (min-width: 1200px){
     .buy_button{
         right:100px;
