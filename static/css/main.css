@@ -17,26 +17,20 @@ h2,h3{
     background-position: center center;
     min-height: 100vh;
 }
+
 .checkout a{
     background:url("/static/img/cart.png");
-    background-size:contain;
+    background-size:36px;
     background-repeat:no-repeat;
-    background-position:0px 14px;
+    background-position:49.5% 10px;
 }
 .nav-logo{
     margin-top: 5px;
 }
-.nav-logo img{
-    height: 60%;
-    width: 65%; 
-}
 .logo{
-    display: block;
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translateY(-50%) translateX(-50%);
+    display: none;
 }
+
 .about,.container{
     padding-top:20px;
 }
@@ -83,31 +77,43 @@ ul{
  font-size: 1.2em;
 }
 .buy_button{
+    position:absolute;
     font-size: 1em;
-    background: #E76C67;
-    border: 1px solid #E76C67;
+    background: #cc4e4d;
+    border: 1px solid #cc4e4d;
     padding: 10px 30px;
     color: white;
     text-decoration: none;
     text-align: center;
     border-radius: 10px;
     opacity: 0.9;
+    right:215px;
+    bottom:166px;
+
 }
 .buy_button:hover{
 background:#fff;
-border: 1px solid #E76C67;
-color: #E76C67;
+border: 1px solid #cc4e4d;
+color: #cc4e4d;
 opacity: 0.9;
 }
 .milk-nav{
 padding-top:70px;
 }
 .words{
-    border:1px solid black;
+    border:1px solid #E6E8E6;
     padding:10px 0;
+    background: #E6E8E6;
+}
+.words{
+    width:290px;
+    margin:0 auto;
 }
 .words p{
     color:#434751;
+}
+#shop-bag a{
+    background:none;
 }
  /* form styles */
 label{
@@ -182,9 +188,21 @@ input[type="password_2"]
 }
 /* media queries */
 @media (min-width: 768px){
-/*.navbar-nav {
-    width:100%;
-}*/
+.logo{
+    display: block;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+.nav-logo img{
+    height: 60%;
+    width: 70%; 
+}
+.checkout a{
+    background-size:contain;
+    background-position:0px 14px;
+}
 .home{
     border: 1px solid #efefef;
     padding: 30px 0 30px;
@@ -193,9 +211,8 @@ input[type="password_2"]
     margin: 0;
 }
 .buy_button{
-position:absolute;
-bottom:175px;
-right:90px;
+    bottom:175px;
+    right:90px;
 }
 /*form styles */
 
