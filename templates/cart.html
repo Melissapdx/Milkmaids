@@ -32,21 +32,32 @@
   </div>
 
 <div class= "order_items">
-<h2>Shopping Cart</h2>
-{% if cart_items == [] %}
-    <p>Your shopping bag is empty but you can change that!</p>
-    <a href="/shop">Shop Now</a>
-{% else %}
-{% for item,diet in cart_items %}
-    <p>Milk id: {{ item.milk_id }}</p>
-    <p>Item:{{ diet.milk_diet.diet_name }} </p>
-    <p>Ounces ordered:{{ item.price_per_oz }} </p>
-    <p>Price:{{ item.inventory * item.price_per_oz }} </p>
-{% endfor %}
-    <p>Order cost: {{order_cost}}</p>
-    <a href ="/checkout">Checkout</a>
-{% endif %}
-
+    <h2>Shopping Cart</h2>
+  <div>
+    <img class="img-checkout" src="/static/img/straws.jpg"/>
+  </div>
+<div>
+  <div class="cart-items">
+    {% if cart_items == [] %}
+        <p>Your shopping bag is empty but you can change that!</p>
+        <a href="/shop">Shop Now</a>
+    {% else %}
+    {% for item,diet in cart_items %}
+      <div class="milk-items">
+        <p>{{ diet.milk_diet.diet_name }} Milk</p>
+        <p>Ounces ordered: {{ item.price_per_oz }} </p>
+        <p>Price: {{ item.inventory * item.price_per_oz }} </p>
+        <div class="buttons">
+        <a class="btn-light remove">Remove</a>
+        <div>
+        <hr></hr>
+    {% endfor %}
+    <div class="check">
+        <p class="words">Order Total: {{order_cost}}</p>
+        <a class="btn-light" href ="/checkout">Checkout</a>
+    </div>
+    {% endif %}
+  </div>
 </div>
 
 <!-- bower -->
