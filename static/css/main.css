@@ -49,8 +49,9 @@ ul{
     box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);
     transition: all .3s ease;
 }
-.container-fluid:hover{
+.container-fluid:hover,.product:hover,.words:hover{
     box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.2);
+
 }
 .nav {
     background-color: #fff;
@@ -60,7 +61,7 @@ ul{
     color:#cc0000;
  }
 .milkmaids{
-    position: absolute;
+    position:absolute;
     width:100%;
     }
 
@@ -70,11 +71,14 @@ ul{
     width:290px;
     display:block;
     margin:0 auto;
+    box-shadow:2px 6px 25px rgba(0, 0, 0, 0.1);
+    transition: all .3s ease;
+
 }
 
 #cart{
- text-align: center;
- font-size: 1.2em;
+    text-align: center;
+    font-size: 1.2em;
 }
 .buy_button{
     position:absolute;
@@ -92,22 +96,26 @@ ul{
 
 }
 .buy_button:hover{
-background:#fff;
-border: 1px solid #cc4e4d;
-color: #cc4e4d;
-opacity: 0.9;
+    background:#fff;
+    border: 1px solid #cc4e4d;
+    color: #cc4e4d;
+    opacity: 0.9;
 }
 .milk-nav{
-padding-top:70px;
+    padding-top:70px;
 }
 .words{
     border:1px solid #E6E8E6;
     padding:10px 0;
-    background: #E6E8E6;
-}
-.words{
     width:290px;
     margin:0 auto;
+    background:#E6E8E6;
+    box-shadow:2px 6px 25px rgba(0, 0, 0, 0.1);
+    transition: all .3s ease;
+}
+.words .diet {
+    color:#cc4e4d;
+    font-size: 22px;
 }
 .words p{
     color:#434751;
