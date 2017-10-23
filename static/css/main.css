@@ -10,6 +10,10 @@ h2,h3{
     color:#cc0000;
     margin:0;
 }
+a:hover{
+    text-decoration:none;
+    color:#333;
+}
 .homepage{
     background:url("/static/img/vintagemilk.jpg");
     background-repeat: no-repeat;
@@ -35,7 +39,6 @@ h2,h3{
     padding-top:20px;
 }
 .user_message{
-
     font-size: 1.2em;
 }
 /*navigation styles*/
@@ -64,7 +67,9 @@ ul{
     position:absolute;
     width:100%;
     }
-
+.milk-nav li{
+/*    display: inline;*/
+}
 /*product page*/
 
 .product{
@@ -91,7 +96,7 @@ ul{
     text-align: center;
     border-radius: 10px;
     opacity: 0.9;
-    right:215px;
+    right:70px;
     bottom:166px;
 
 }
@@ -101,24 +106,28 @@ ul{
     color: #cc4e4d;
     opacity: 0.9;
 }
-.milk-nav{
+.milk-nav,.order_items,.user-home{
     padding-top:70px;
 }
 .words{
-    border:1px solid #E6E8E6;
-    padding:10px 0;
+    border:1px solid #ddd;
+    padding:10px 15px;
     width:290px;
     margin:0 auto;
+    margin-bottom: 20px;
     background:#E6E8E6;
     box-shadow:2px 6px 25px rgba(0, 0, 0, 0.1);
     transition: all .3s ease;
 }
 .words .diet {
     color:#cc4e4d;
+    font-family:'Open Sans', sans-serif;
     font-size: 22px;
+    text-align: center;
 }
 .words p{
     color:#434751;
+    font-family:'Lato', sans-serif;
 }
 #shop-bag a{
     background:none;
@@ -219,7 +228,7 @@ input[type="password_2"]
     margin: 0;
 }
 .buy_button{
-    bottom:175px;
+    bottom:190px;
     right:90px;
 }
 /*form styles */
