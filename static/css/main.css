@@ -70,6 +70,15 @@ a:hover{
 .check{
     margin-top:30px; 
 }
+.ship{
+    font-size:1.2em;
+    color:#cc0000;
+    margin-top: 20px;
+}
+.shipping{
+    padding: 0px 20px 0px;
+    margin-top: 15px;
+}
 /*navigation styles*/
 ul{
     list-style:none;
@@ -96,9 +105,7 @@ ul{
     position:absolute;
     width:100%;
     }
-.milk-nav li{
-/*    display: inline;*/
-}
+
 /*product page*/
 
 .product{
@@ -136,9 +143,10 @@ ul{
     color: #cc4e4d;
     opacity: 0.9;
 }
-.milk-nav,.order_items,.user-home{
+.milk-nav,.order_items,.user-home,.shipping{
     padding-top:70px;
 }
+
 .words{
     border:1px solid #ddd;
     padding:10px 15px;
@@ -158,6 +166,11 @@ ul{
 .words p{
     color:#434751;
     font-family:'Lato', sans-serif;
+}
+.diet-words p{
+    color:#434751;
+    font-family:'Lato', sans-serif;
+    font-size: 14px;
 }
 #shop-bag a{
     background:none;
@@ -260,6 +273,20 @@ input[type="password_2"]
 .buy_button{
     bottom:190px;
     right:90px;
+}
+.milk-nav li{
+    display: inline;
+    text-align: justify;
+    padding:15px;
+}
+.milk-nav li:hover{
+    border:1px solid #cc0000;
+    padding:10px 15px;
+    margin:0 auto;
+    margin-bottom: 20px;
+    color:#cc0000;
+    box-shadow:2px 6px 25px rgba(0, 0, 0, 0.1);
+    transition: all .3s ease;
 }
 /*form styles */
 
