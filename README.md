@@ -13,3 +13,8 @@ APIs: Stripe
 Mobile First responsive design
 
 ![alt tag](https://user-images.githubusercontent.com/11779887/31972780-36919aba-b8d7-11e7-9771-cf6bea2060e1.png)
+
+Users can view products which have been dynamically created and filter items by donor's diet type. 
+
+User can add items to cart and are notified with a Ajax call if item is added or already in cart
+![alt tag](https://user-images.githubusercontent.com/11779887/31973097-0ee3b9c4-b8d9-11e7-85f5-605b3b0b9553.png)
