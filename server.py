@@ -23,8 +23,8 @@ stripe.api_key = stripe_keys['secret_key']
 
 @app.route('/stripe_charge')
 def index():
-
-    return render_template('index.html', key=stripe_keys['publishable_key'])
+    order_cost = session.get("order_cost")
+    return render_template('index.html', key=stripe_keys['publishable_key'], order_cost=order_cost)
 
 
 @app.route('/')

@@ -1,9 +1,15 @@
 {%extends 'base.html'%}
 {%block content%}
+<div class="user-page">
   <div class="user-home">
+    <h2>Your Orders</h2>
   {% for message in get_flashed_messages() %}
-    <li>{{ message }} {{user.firstname}}</li>
+    <li class="user-greet">{{ message }} {{user.firstname}}</li>
   {% endfor %}
+  <div>
 </div>
-<button><a href ="/logout">Logout</button>
+    <p> No orders so far! Let's shop!</p>
+</div>
+<a href ="/logout" class="btn-light">Logout</a>
+</div>
 {%endblock%}

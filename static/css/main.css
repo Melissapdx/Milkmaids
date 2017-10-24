@@ -15,6 +15,18 @@ a:hover{
     text-decoration:none;
     color:#333;
 }
+li{
+    list-style:none; 
+
+}
+p{
+    text-align:center; 
+    color: #434751;
+    font-family: 'Lato', sans-serif;
+}
+.milk-nav,.order_items,.user-home,.forms,.user-page{
+    padding-top:70px;
+}
 .homepage{
     background:url("/static/img/vintagemilk.jpg");
     background-repeat: no-repeat;
@@ -40,7 +52,6 @@ a:hover{
     margin-top: 5px;
 }
 
-
 .about,.container{
     padding-top:20px;
 }
@@ -61,9 +72,9 @@ a:hover{
 }
 
 .btn-light{
-    border: 1px solid red;
+    border: 1px solid #cc0000;
     padding: 10px 113px;
-    color:red;
+    color:#cc0000;
     text-align: center;
 }
 .cart-item{
@@ -88,12 +99,25 @@ a:hover{
     margin-top: 20px;
 }
 .shipping{
-    padding: 0px 20px 0px;
+    padding: 70px 20px 0px;
     margin-top: 15px;
 }
-.checkout-page .btn-light{
+.checkout-page .btn-light,.shipping .btn-light{
     margin:0 auto;
     display:block;
+}
+.checkout-page h2{
+    padding-top:70px; 
+}
+.user-page .btn-light{
+    margin: 0 auto;
+    margin-top:20px;
+    display: block;
+    max-width: 50%;
+}
+.user-greet{
+    text-align:center;
+    margin-top:30px; 
 }
 /*navigation styles*/
 ul{
@@ -120,7 +144,7 @@ ul{
 .milkmaids{
     position:absolute;
     width:100%;
-    }
+}
 
 /*product page*/
 
@@ -159,9 +183,7 @@ ul{
     color: #cc4e4d;
     opacity: 0.9;
 }
-.milk-nav,.order_items,.user-home,.shipping{
-    padding-top:70px;
-}
+
 
 .words{
     border:1px solid #ddd;
@@ -178,10 +200,6 @@ ul{
     font-family:'Open Sans', sans-serif;
     font-size: 22px;
     text-align: center;
-}
-.words p{
-    color:#434751;
-    font-family:'Lato', sans-serif;
 }
 .diet-words p{
     color:#434751;
@@ -218,7 +236,9 @@ input[type="password_2"]
     max-width: 100%;
     padding:10px 25px;
     font-size: 1.2em;
-    color:black;
+    color: #CC0000;
+    background: #fff;
+    border: 1px solid #CC0000;
 }
 .login_form {
     margin-bottom: 30px;
@@ -259,9 +279,8 @@ input[type="password_2"]
     position: relative;
     left: -35px;
 }
-.forms{
-    padding-top: 70px;
-}
+
+
 /* media queries */
 @media (min-width: 768px){
 
@@ -297,7 +316,17 @@ input[type="password_2"]
     color:#cc0000;
     transition: all .5s ease;
 }
-/*form styles */
+.cart-item{
+    margin:0px 40px 0px 0px;;
+}
+.cart-items{
+    max-width:100%; 
+}
+.order_items{
+    display:flex;
+    flex-direction:row;
+
+}
 
 .login_form, .register_form{
     width:50%;
@@ -308,12 +337,17 @@ input[type="password_2"]
 .register_form{
     border-left: 1px solid lightgrey;
 }
+.shipping .btn-light{
+    max-width:50%; 
+}
+
 @media (min-width: 1000px){
     .buy_button{
         right:45px;
     }
 
 }
+
 @media (min-width: 1200px){
     .buy_button{
         right:100px;
