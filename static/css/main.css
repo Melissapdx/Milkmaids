@@ -76,6 +76,14 @@ p{
     padding: 10px 113px;
     color:#cc0000;
     text-align: center;
+    transition: all .4s ease;
+}
+.btn-light:hover{
+    background:#cc0000;
+    border: 3px solid #fff;
+    color: #fff;
+    opacity: 0.9;
+    border-radius:13px; 
 }
 .cart-item{
     display:flex;
