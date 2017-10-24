@@ -121,7 +121,7 @@ p{
     margin: 0 auto;
     margin-top:20px;
     display: block;
-    max-width: 50%;
+    max-width: 30%;
 }
 .user-greet{
     text-align:center;
@@ -346,13 +346,14 @@ input[type="password_2"]
     border-left: 1px solid lightgrey;
 }
 .shipping .btn-light{
-    max-width:50%; 
+    max-width:30%; 
 }
 
 @media (min-width: 1000px){
     .buy_button{
         right:45px;
-    }
+}
+
 
 }
 
