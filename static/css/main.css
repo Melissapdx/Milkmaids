@@ -32,9 +32,7 @@ a:hover{
 .nav-logo{
     margin-top: 5px;
 }
-.logo{
-    display: none;
-}
+
 
 .about,.container{
     padding-top:20px;
@@ -52,7 +50,7 @@ a:hover{
 .cart-items{
     max-width: 50%;
     margin: 0 auto;
-    text-align:center;
+    text-align:justify;
 }
 
 .btn-light{
@@ -61,7 +59,14 @@ a:hover{
     color:red;
     text-align: center;
 }
-
+.cart-item{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #E6E8E6;
+    align-items: center;
+    margin-bottom: 10px;
+}
 .remove{
     padding: 10px 15px;
     border: 1px solid red;
@@ -78,6 +83,10 @@ a:hover{
 .shipping{
     padding: 0px 20px 0px;
     margin-top: 15px;
+}
+.checkout-page .btn-light{
+    margin:0 auto;
+    display:block;
 }
 /*navigation styles*/
 ul{
@@ -285,8 +294,7 @@ input[type="password_2"]
     margin:0 auto;
     margin-bottom: 20px;
     color:#cc0000;
-    box-shadow:2px 6px 25px rgba(0, 0, 0, 0.1);
-    transition: all .3s ease;
+    transition: all .5s ease;
 }
 /*form styles */
 

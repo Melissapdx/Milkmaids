@@ -10,8 +10,37 @@
     <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans:400,700" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Milkmaids</title>
+
 </head>
 <body>
+<nav class="navbar navbar-default milkmaids">
+  <div class="container-fluid">
+       <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+     <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav"/>
+        <a href="#" class="navbar-left nav-logo"><img src="static/img/M.png"></a>
+          <li><a href="/">Home</a></li>
+          <li><a href="/shop">Shop</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right"/>
+        {% if 'User ID' in session %}
+                 <li class ="log"><a href = "/logout">Logout</a></li>
+            {% endif %}
+            {% if 'User ID' not in session %}
+                <li class ="log"> <a href = "/login">Login</a></li>
+            {% endif %}     
+            <li class="checkout"><a href ="/cart"><span>0</span></a></li>
+        </ul>
+      </div>
+  </div>
+</nav>
 
     {%block content%}
 

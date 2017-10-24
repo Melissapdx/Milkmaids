@@ -1,5 +1,6 @@
 {%extends 'base.html'%}
 {% block content%}
+<div class="checkout-page">
 <nav class="navbar navbar-default milkmaids">
   <div class="container-fluid">
        <div class="navbar-header">
@@ -43,14 +44,16 @@
         <a href="/shop">Shop Now</a>
     {% else %}
     {% for item,diet in cart_items %}
+    <div class="cart-item">
       <div class="milk-items">
         <p>{{ diet.milk_diet.diet_name }} Milk</p>
         <p>Ounces ordered: {{ item.price_per_oz }} </p>
         <p>Price: {{ item.inventory * item.price_per_oz }} </p>
+      </div>
         <div class="buttons">
         <a class="btn-light remove">Remove</a>
-        <div>
-        <hr></hr>
+        </div>
+    </div>
     {% endfor %}
     <div class="check">
         <p class="words">Order Total: {{order_cost}}</p>
@@ -59,8 +62,8 @@
     {% endif %}
   </div>
 </div>
+</div>
 
-<!-- bower -->
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="/static/milk.js"></script>
 {%endblock%}
