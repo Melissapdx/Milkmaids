@@ -29,6 +29,13 @@ a:hover{
     background-repeat:no-repeat;
     background-position:49.5% 10px;
 }
+.logo{
+    display: block;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translateY(-50%) translateX(-50%);
+}
 .nav-logo{
     margin-top: 5px;
 }
@@ -257,13 +264,7 @@ input[type="password_2"]
 }
 /* media queries */
 @media (min-width: 768px){
-.logo{
-    display: block;
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translateY(-50%) translateX(-50%);
-}
+
 .nav-logo img{
     height: 60%;
     width: 70%; 
