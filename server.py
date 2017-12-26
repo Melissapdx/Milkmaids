@@ -234,7 +234,6 @@ def charge():
     # Amount in cents
     order_cost = session.get("order_cost")
     amount = order_cost
-    print request.form
     customer = stripe.Customer.create(
         email='customer@example.com',
         source=request.form['stripeToken']
