@@ -20,7 +20,6 @@ $( document).ready(function() {
 $('.buy_button').on('click', function() {
     var milk = $(this).data('tooltip');
     addToCart(milk);
-    buy = $('.buy_button');
 });
 //shows or hides items on product page based on what user clicks on
 $('.milk-nav a').on('click',function() {
