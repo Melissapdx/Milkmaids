@@ -1,5 +1,6 @@
 """Model and database functions for Milkmaids"""
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 db = SQLAlchemy()
 
@@ -129,7 +130,7 @@ def example_data():
 
 def connect_to_db(app, db_uri="postgresql:///milkmaids"):
     """"Connect the database to the flask app"""
-
+    db_uri = os.environ.get("DATABASE_URL", db_uri)
     #Configure to PstgresSql database
     app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
