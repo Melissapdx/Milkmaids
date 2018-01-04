@@ -93,7 +93,7 @@ def login_handler():
     else:
         flash("Email doesn't exist. Please sign up!")
         return redirect("/login")
-    return redirect("/userhome/%s" % user.user_id)
+    return redirect("/shop")
 
 
 @app.route("/logout")
