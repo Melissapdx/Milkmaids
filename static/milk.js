@@ -28,3 +28,11 @@ $('.milk-nav a').on('click',function() {
     selectDiv.siblings().hide();
     selectDiv.show();
 });
+
+//removes item from customers cart, user clicks on button and div is removed from cart 
+var removeBtn = document.querySelector('.remove');
+var cartItem = document.querySelector('.cart-item');
+function removeFromCart() {
+    cartItem.remove();
+}
+this.removeBtn.addEventListener('click',removeFromCart);

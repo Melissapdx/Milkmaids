@@ -120,7 +120,7 @@ def get_milk():
     """Get information on milk products to display to user"""
     milk_products = db.session.query(Milk, Milk_diet).join(Milk_diet).all()
 
-   
+
     milk_output = []
     for (milk, diet) in milk_products:
         milk_output.append({
