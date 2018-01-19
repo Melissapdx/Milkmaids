@@ -20,7 +20,8 @@
         <p>Price: {{ item.inventory * item.price_per_oz }} </p>
       </div>
         <div class="buttons">
-        <a class="btn-light remove">Remove</a>
+        <button type="submit" class="btn-light remove" data-tooltip="{{item.milk_id}}">Remove</button>
+        <!-- <a class="btn-light remove">Remove</a> -->
         </div>
     </div>
     {% endfor %}

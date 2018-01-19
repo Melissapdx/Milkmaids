@@ -157,6 +157,12 @@ def add_to_cart():
     return jsonify({'count': len(set(cart['order']))})
 
 
+@app.route("/remove_from_cart")
+def remove_from_cart():
+    """Remove a milk item from cart"""
+    
+
+
 @app.route("/update_cart_count")
 def update_cart_count():
     """update cart count on shop and homepage"""
