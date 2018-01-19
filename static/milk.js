@@ -30,6 +30,16 @@ $('.milk-nav a').on('click',function() {
     selectDiv.show();
 });
 
+function removeFromCart(milk) {
+    $.get('/remove_from_cart', {milk:milk}, function(data){
+        $('.checkout a span').html(data.count);
+    });
+}
+//ajax call when user clicks button to remove from cart
+$('.remove').on('click', function() {
+    var milk_to_remove = $(this).data('tooltip');
+    removeFromCart(milk_to_remove);
+});
 
 //removes item from customers cart, user clicks on button and div is removed from cart 
 $('.remove').on('click',function(){
