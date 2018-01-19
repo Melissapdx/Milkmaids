@@ -160,7 +160,23 @@ def add_to_cart():
 @app.route("/remove_from_cart")
 def remove_from_cart():
     """Remove a milk item from cart"""
+    milk_id_to_remove = request.args.get('milk')
+    milk_id_to_remove = int(milk_id_to_remove)
+
+    if 'cart' not in session:
+        return jsonify({'error':'no item in cart to remove'})
+
+    updated_cart_items = []
+    cart_items = session['cart'].get('order',[])
     
+    for item in cart_items:
+        if item != milk_id_to_remove:
+            updated_cart_items.append(item)
+    # https://stackoverflow.com/questions/39261260/flask-session-variable-not-persisting-between-requests?rq=1
+    session.pop('cart', None)
+    session['cart'] = {}
+    session['cart']['order'] = updated_cart_items
+    return jsonify({'count': len(updated_cart_items)})
 
 
 @app.route("/update_cart_count")
@@ -189,6 +205,7 @@ def display_cart():
     total_cost = sum of items' cost
     """
     #get cart from session
+    print session['cart']['order']
     cart = session.get("cart", {})
     cart_items = []
     milk_ids = cart.get("order")

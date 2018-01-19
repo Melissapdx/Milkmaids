@@ -10,6 +10,7 @@ function addToCart(milk) {
         }
     });
 }
+
 //reloads customer cart count on page
 $( document).ready(function() {
     $.get("/update_cart_count", function(count) {
@@ -28,6 +29,7 @@ $('.milk-nav a').on('click',function() {
     selectDiv.siblings().hide();
     selectDiv.show();
 });
+
 
 //removes item from customers cart, user clicks on button and div is removed from cart 
 $('.remove').on('click',function(){
