@@ -205,7 +205,6 @@ def display_cart():
     total_cost = sum of items' cost
     """
     #get cart from session
-
     cart = session.get("cart", {})
     cart_items = []
     milk_ids = cart.get("order")
