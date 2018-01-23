@@ -68,6 +68,7 @@ def register_process():
 
     return redirect("/")
 
+
 @app.route("/login")
 def login_form():
     """Displays login form"""
@@ -120,7 +121,6 @@ def get_milk():
     """Get information on milk products to display to user"""
     milk_products = db.session.query(Milk, Milk_diet).join(Milk_diet).all()
 
-
     milk_output = []
     for (milk, diet) in milk_products:
         milk_output.append({
@@ -164,10 +164,10 @@ def remove_from_cart():
     milk_id_to_remove = int(milk_id_to_remove)
 
     if 'cart' not in session:
-        return jsonify({'error':'no item in cart to remove'})
+        return jsonify({'error': 'no item in cart to remove'})
 
     updated_cart_items = []
-    cart_items = session['cart'].get('order',[])
+    cart_items = session['cart'].get('order', [])
     for item in cart_items:
         if item != milk_id_to_remove:
             updated_cart_items.append(item)
@@ -205,7 +205,7 @@ def display_cart():
     total_cost = sum of items' cost
     """
     #get cart from session
-    print session['cart']['order']
+
     cart = session.get("cart", {})
     cart_items = []
     milk_ids = cart.get("order")
