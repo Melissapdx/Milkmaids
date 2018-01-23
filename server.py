@@ -161,6 +161,7 @@ def add_to_cart():
 def remove_from_cart():
     """Remove a milk item from cart"""
     milk_id_to_remove = request.args.get('milk')
+    print "Milk", milk_id_to_remove
     milk_id_to_remove = int(milk_id_to_remove)
 
     if 'cart' not in session:
@@ -168,7 +169,6 @@ def remove_from_cart():
 
     updated_cart_items = []
     cart_items = session['cart'].get('order',[])
-    
     for item in cart_items:
         if item != milk_id_to_remove:
             updated_cart_items.append(item)
@@ -176,7 +176,8 @@ def remove_from_cart():
     session.pop('cart', None)
     session['cart'] = {}
     session['cart']['order'] = updated_cart_items
-    return jsonify({'count': len(updated_cart_items)})
+    # return jsonify({'count': len(updated_cart_items)})
+    return redirect("/cart")
 
 
 @app.route("/update_cart_count")
