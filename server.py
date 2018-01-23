@@ -161,7 +161,6 @@ def add_to_cart():
 def remove_from_cart():
     """Remove a milk item from cart"""
     milk_id_to_remove = request.args.get('milk')
-    print "Milk", milk_id_to_remove
     milk_id_to_remove = int(milk_id_to_remove)
 
     if 'cart' not in session:
