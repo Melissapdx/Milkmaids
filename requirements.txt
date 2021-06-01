@@ -15,5 +15,5 @@ psycopg2==2.7.1
 requests==2.18.4
 SQLAlchemy==1.1.7
 stripe==1.66.0
-urllib3==1.22
+urllib3==1.26.5
 Werkzeug==0.10.4
